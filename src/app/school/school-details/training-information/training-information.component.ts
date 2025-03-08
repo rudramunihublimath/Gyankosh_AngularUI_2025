@@ -17,7 +17,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class  TrainingInformationComponent implements OnInit  {
 
-  displayedColumns = ['position', 'dataValidated', 'trainingPartCompleted', 'dateofCompletion', 'actions'];
+  displayedColumns = [ 'dataValidated', 'trainingPartCompleted', 'dateofCompletion', 'actions'];
   // displayFilterColumns = ['positionFilter', 'firstnameFilter', 'lastnameFilter', 'emailFilter', 'actionFilter']
   dataSource: Trainer[] = [];
   allPOCDetail: Trainer[] = [];

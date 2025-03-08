@@ -9,15 +9,15 @@
         <div class="table-container">
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">  
             <!-- Position Column -->
-            <ng-container matColumnDef="position">
+            <!-- <ng-container matColumnDef="position">
             <th class="text-center" mat-header-cell *matHeaderCellDef> No. </th>
             <td class="text-center" mat-cell *matCellDef="let element; let i=index"> {{i+1}} </td>
-            </ng-container>
+            </ng-container> -->
 
         
             <!-- dateValidated Column -->
             <ng-container matColumnDef="dataValidated">
-                <th class="text-center" mat-header-cell *matHeaderCellDef> Date Validated </th>
+                <th style="width: 15%;" class="text-center" mat-header-cell *matHeaderCellDef> Data Validated?</th>
                 <td class="text-center" mat-cell *matCellDef="let element"> 
                     {{element.dataValidated}} 
                 </td>
