@@ -4,8 +4,8 @@
 
 export const environment = {
     production: false,
-    //baseUrl: 'http://82.29.161.198:8081',    
-    baseUrl: 'http://localhost:8081',
+    baseUrl: 'http://82.29.161.198:8081',    
+    // baseUrl: 'http://localhost:8081',
     // securedBaseUrl: 'http://localhost:8081/Secured/MBP'
   };
   
