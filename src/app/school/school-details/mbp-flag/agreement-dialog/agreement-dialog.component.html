@@ -1,0 +1,91 @@
+<div class="agreement-wrapper">
+    <!-- fxLayout="row" fxLayoutAlign="center center" -->
+    <section class="agreement-parent-card">
+        <div class="agreement-header">
+            <mat-card class="agreement-header-card">
+                <mat-card-content class="agreement-header-title secondary-text">
+                    <span class="title-text">{{header}}</span>
+                    <mat-icon (click)="close()" class="material-symbols-outlined close-icon">close</mat-icon>
+                </mat-card-content>
+            </mat-card>
+        </div>
+
+        <form [formGroup]="agreementForm" class="agreement-form-container">
+        
+            <div class="row">
+                <mat-form-field class="col-md-6 col-12 agreement-form-field" appearance="outline">
+                    <mat-label>Agreement Completed</mat-label>
+                    <mat-select formControlName="agreementCompleted" (selectionChange)="selectedAgreementValue($event)">
+                      <mat-option *ngFor="let level of levels" [value]="level">
+                        {{level}}
+                      </mat-option>
+                    </mat-select>
+                </mat-form-field>
+    
+                <mat-form-field class="col-md-6 col-12 agreement-form-field" appearance="outline"
+                     *ngIf="agreementForm.controls['agreementCompleted'].value === 'Yes'"
+                >
+                    <mat-label>Agreement Completed Date</mat-label>
+                    <input matInput [matDatepicker]="picker2" formControlName="agreementCompletedDate"
+                        [required]="agreementForm.controls['agreementCompleted'].value === 'Yes'"
+                    >
+                    <mat-datepicker-toggle matIconSuffix [for]="picker2">
+                        <mat-icon class="agreement-calender-icon" matDatepickerToggleIcon>today</mat-icon>
+                    </mat-datepicker-toggle>
+                    <mat-datepicker #picker2></mat-datepicker>
+                </mat-form-field>
+    
+            </div>
+
+            <div class="row">
+                <mat-form-field class="col-md-6 col-12 agreement-form-field" appearance="outline"
+                    *ngIf="agreementForm.controls['agreementCompleted'].value === 'Yes'"
+                >
+                    <mat-label>Agreement Scan Copy Link</mat-label>
+                    <input type="text" matInput placeholder="Agreement Scan Copy Link" formControlName="agreementScanCopyLink" 
+                        [required]="agreementForm.controls['agreementCompleted'].value === 'Yes'"
+                    >
+                    <!-- <span matSuffix class="ad-link-icon-wrapper">
+                        <mat-icon *ngIf="agreementForm.controls['agreementScanCopyLink']?.value"
+                            class="ad-link-icon launch-icon" matSuffix
+                            matTooltip="Open Link"
+                            (click)="navigateToFile()"
+                        >
+                            launch
+                        </mat-icon>
+                        <span>
+                            <span *ngIf="!agreementForm.controls['agreementScanCopyLink']?.value">
+                                <mat-icon *ngIf="isAuthorized" class="ad-link-icon upload-icon" matSuffix
+                                matTooltip="Upload Agreement Link" (click)="agreementLink.click()"
+                                >
+                                    cloud_upload
+                                </mat-icon>
+                              <input [readonly]="!isAuthorized" #agreementLink type="file" accept="image/jpeg,image/gif,image/png,application/pdf" (change)="addAgreementLink($event)" style="display: none;">
+                            </span>
+                            <mat-icon *ngIf="isAuthorized && agreementForm.controls['agreementScanCopyLink']?.value" (click)="resetAgreementLink()" class="ad-link-icon reset-icon" matSuffix
+                                matTooltip="Reset Agreement Link"
+                            >
+                                refresh
+                            </mat-icon>
+                        </span>
+
+                    </span> -->
+
+                </mat-form-field>
+
+                <mat-form-field class="col-md-6 col-12 agreement-form-field" appearance="outline"
+                    *ngIf="agreementForm.controls['agreementCompleted'].value === 'Yes'"
+                >
+                    <mat-label>Uploaded By</mat-label>
+                    <input readonly type="text" matInput placeholder="Uploaded By UserId" formControlName="uploadedByUserId" 
+                        [required]="agreementForm.controls['agreementCompleted'].value === 'Yes'"
+                    >
+                </mat-form-field>
+            </div>
+
+        </form>
+        <div *ngIf="isAuthorized" class="col-md-12 text-center btn-container">
+            <button (click)="submitAgreement()" class="save-btn" mat-flat-button color="warn">Save</button>
+        </div>
+    </section>
+</div>

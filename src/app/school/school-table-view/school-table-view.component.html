@@ -1,0 +1,344 @@
+
+<ngx-spinner type="ball-scale-multiple"></ngx-spinner>
+<div class="flex-center h-100 user-details-main">
+  <mat-card class="table-card">
+    <div class="table-title">
+      <span class="utv-title">School Details</span>
+      <span class="align-center sd-action-section">
+        <div class="flex-center mr-4">
+          <mat-form-field class="col-md-8 stv-form-field utv w-100" appearance="outline" floatLabel="always" >
+            <!-- <mat-label>Filter By First Name</mat-label> -->
+            <input [formControl]="schoolFilterControl" type="text" matInput placeholder="Search School">
+          </mat-form-field>
+        </div>
+        <button *ngIf="isAuthorized" (click)="addNewSchool()" class="add-btn" mat-raised-button color="warn">Add New School</button>
+        <span class="upload-icon-container" *ngIf="isAdmin" (click)="schoolCSV.click()">
+          <span class="material-icons material-icons-outlined stv-upload-icon secondary-text"
+            matTooltip="Upload School In Bulk"
+          >
+            upload_file
+            <!-- cloud_upload -->
+          </span>
+          <input [readonly]="!isAuthorized" #schoolCSV type="file" accept=".csv" (change)="uploadSchoolCSV($event)" style="display: none;">
+        </span>
+        
+      </span>
+    </div>
+    <div class="table-container">
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      
+        <!-- Position Column -->
+        <ng-container matColumnDef="position" sticky>
+          <th class="text-center" mat-header-cell *matHeaderCellDef> School Id </th>
+          <td class="text-center" mat-cell *matCellDef="let element; let i=index"> {{element.id}} </td>
+        </ng-container>
+
+        <!-- School Id Filter -->
+        <ng-container matColumnDef="position-filter" sticky>
+          <th class="text-center" mat-header-cell *matHeaderCellDef> 
+            <div class="flex-center" style="width: 70px;">
+              <mat-form-field class="col-md-6 col-12 stv-form-field w-100" appearance="outline">
+                <!-- <mat-label>Id</mat-label> -->
+                <mat-icon matSuffix class="search-icon">search</mat-icon>
+                <input type="text" placeholder="Id" matInput 
+                  [formControl]="filterBySchoolId"
+                  
+                >
+              </mat-form-field>
+            </div>
+            
+          </th>
+        </ng-container>
+
+        <!-- School Name Column -->
+        <ng-container matColumnDef="name">
+          <th class="text-center" mat-header-cell *matHeaderCellDef> School Name </th>
+          <td class="text-center" mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+
+        <!-- School name Filter -->
+        <ng-container matColumnDef="name-filter">
+          <th class="text-center" mat-header-cell *matHeaderCellDef> 
+            <div class="flex-center">
+
+              <mat-form-field class="col-md-6 col-12 stv-form-field w-90" appearance="outline">
+                <!-- <mat-label>School Name</mat-label> -->
+                <mat-icon matSuffix class="search-icon">search</mat-icon>
+                <input type="text" placeholder="School Name" matInput 
+                [formControl]="filterBySchoolName"
+                
+                >
+              </mat-form-field>
+            </div>
+          </th>
+        </ng-container>
+
+        <!-- Contact Column -->
+        <ng-container matColumnDef="contactNum">
+          <th class="text-center" mat-header-cell *matHeaderCellDef> Contact No. </th>
+          <td class="text-center" mat-cell *matCellDef="let element"> {{element.contactNum1}} </td>
+        </ng-container>
+
+        <!-- Contact Filter -->
+        <ng-container matColumnDef="contactNum-filter">
+          <th class="text-center" mat-header-cell *matHeaderCellDef> 
+            <div class="flex-center">
+              <mat-form-field class="col-md-6 col-12 stv-form-field w-90" appearance="outline">
+                <!-- <mat-label>Contact Number</mat-label> -->
+                <mat-icon matSuffix class="search-icon">search</mat-icon>
+                <input type="text" placeholder="Contact Number" matInput 
+                  [formControl]="filterByContact"
+                  
+                >
+              </mat-form-field>
+            </div>
+          </th>
+        </ng-container>
+
+        <!-- Address Column -->
+        <ng-container matColumnDef="address">
+          <th class="text-center" mat-header-cell *matHeaderCellDef> Address </th>
+          <td class="text-center" mat-cell *matCellDef="let element"> {{element?.address1 ?? '-'}} </td>
+        </ng-container>
+        
+        <!-- Address Filter -->
+        <ng-container matColumnDef="address-filter">
+          <th class="text-center" mat-header-cell *matHeaderCellDef> 
+            <div class="flex-center">
+
+              <mat-form-field class="col-md-6 col-12 stv-form-field w-90" appearance="outline">
+                <!-- <mat-label>City</mat-label> -->
+              <mat-icon matSuffix class="search-icon">search</mat-icon>
+              <input type="text" placeholder="Address" matInput 
+                [formControl]="filterByAddress"
+                
+              >
+            </mat-form-field>
+          </div>
+          </th>
+        </ng-container>
+
+        <!-- City Column -->
+        <ng-container matColumnDef="city">
+          <th class="text-center" mat-header-cell *matHeaderCellDef> City </th>
+          <td class="text-center" mat-cell *matCellDef="let element"> {{element.city}} </td>
+        </ng-container>
+
+        <!-- City Filter -->
+        <ng-container matColumnDef="city-filter">
+          <th class="text-center" mat-header-cell *matHeaderCellDef> 
+            <div class="flex-center">
+
+              <mat-form-field class="col-md-6 col-12 stv-form-field w-90" appearance="outline">
+                <!-- <mat-label>City</mat-label> -->
+              <mat-icon matSuffix class="search-icon">search</mat-icon>
+              <input type="text" placeholder="City" matInput 
+                [formControl]="filterByCity"
+                
+              >
+            </mat-form-field>
+          </div>
+          </th>
+        </ng-container>
+
+        <!-- PinCode Column -->
+        <ng-container matColumnDef="pincode">
+          <th class="text-center" mat-header-cell *matHeaderCellDef> Pin Code </th>
+          <td class="text-center" mat-cell *matCellDef="let element"> {{element.pincode}} </td>
+        </ng-container>
+
+        <!-- Pincode Filter -->
+        <ng-container matColumnDef="pincode-filter">
+          <th class="text-center" mat-header-cell *matHeaderCellDef> 
+            <div class="flex-center">
+
+              <mat-form-field class="col-md-6 col-12 stv-form-field w-90" appearance="outline">
+                <!-- <mat-label>Pin Code</mat-label> -->
+                <mat-icon matSuffix class="search-icon">search</mat-icon>
+                <input type="text" placeholder="Pin Code" matInput 
+                  [formControl]="filterByPinCode"
+                  
+                >
+              </mat-form-field>
+            </div>
+          </th>
+        </ng-container>
+
+        <!-- Email Column -->
+        <ng-container matColumnDef="email">
+          <th class="text-center" mat-header-cell *matHeaderCellDef> Email </th>
+          <td class="text-center" mat-cell *matCellDef="let element"> {{element.email}} </td>
+        </ng-container>
+
+        <!-- Email Filter -->
+        <ng-container matColumnDef="email-filter">
+          <th class="text-center" mat-header-cell *matHeaderCellDef> 
+            <div class="flex-center">
+
+              <mat-form-field class="col-md-6 col-12 stv-form-field w-90" appearance="outline">
+                <!-- <mat-label>Email</mat-label> -->
+                <mat-icon matSuffix class="search-icon">search</mat-icon>
+                <input type="text" placeholder="Email" matInput 
+                [formControl]="filterByEmail"
+                
+                >
+              </mat-form-field>
+            </div>
+          </th>
+        </ng-container>
+
+        <!-- outReachAllocated Column -->
+        <ng-container matColumnDef="outReachAllocated">
+          <th class="text-center" mat-header-cell *matHeaderCellDef> Outreach Allocated </th>
+          <td class="text-center" mat-cell *matCellDef="let element"> {{element.outReachAllocated}} </td>
+        </ng-container>
+
+        <!-- OuReachAllocated Filter -->
+        <ng-container matColumnDef="outReachAllocated-filter">
+          <th class="text-center" mat-header-cell *matHeaderCellDef> 
+            <div class="flex-center">
+              
+              <mat-form-field class="col-md-6 col-12 stv-form-field w-90" appearance="outline">
+                <!-- <mat-label>Outreach Allocated</mat-label> -->
+                <mat-icon matSuffix class="search-icon">search</mat-icon>
+                <input type="text" placeholder="Outreach Allocated" matInput 
+                [formControl]="filterByOutreachAllocated"
+                
+                >
+              </mat-form-field>
+            </div>
+          </th>
+        </ng-container>
+
+        <!-- outReachHeadAllocated Column -->
+        <ng-container matColumnDef="outReachHeadAllocated">
+          <th class="text-center" mat-header-cell *matHeaderCellDef> Outreach Head Allocated </th>
+          <td class="text-center" mat-cell *matCellDef="let element"> {{element.outReachHeadAllocated}} </td>
+        </ng-container>
+
+        <!-- OuReachHeadAllocated Filter -->
+        <ng-container matColumnDef="outReachHeadAllocated-filter">
+          <th class="text-center" mat-header-cell *matHeaderCellDef> 
+            <div class="flex-center">
+
+              <mat-form-field class="col-md-6 col-12 stv-form-field w-100" appearance="outline">
+                <!-- <mat-label>Outreach Head Allocated</mat-label> -->
+              <mat-icon matSuffix class="search-icon">search</mat-icon>
+              <input type="text" placeholder="Outreach Head Allocated" matInput 
+                [formControl]="filterByOutreachHeadAllocated"
+                
+                >
+              </mat-form-field>
+            </div>
+          </th>
+        </ng-container>
+
+        <!-- trainingHeadAllocated Column -->
+        <ng-container matColumnDef="trainingHeadAllocated">
+          <th class="text-center" mat-header-cell *matHeaderCellDef> Training Head Allocated </th>
+          <td class="text-center" mat-cell *matCellDef="let element"> {{element.trainingHeadAllocated}} </td>
+        </ng-container>
+
+        <!-- trainingHeadAllocated Filter -->
+        <ng-container matColumnDef="trainingHeadAllocated-filter">
+          <th class="text-center" mat-header-cell *matHeaderCellDef> 
+            <div class="flex-center">
+
+              <mat-form-field class="col-md-6 col-12 stv-form-field w-100" appearance="outline">
+                <!-- <mat-label>Training Head Allocated</mat-label> -->
+                <mat-icon matSuffix class="search-icon">search</mat-icon>
+              <input type="text" placeholder="Training Head Allocated" matInput 
+                [formControl]="filterByTrainingHeadAllocated"
+                
+              >
+              </mat-form-field>
+            </div>
+          </th>
+        </ng-container>
+
+        <!-- Outreach Column -->
+        <ng-container matColumnDef="outreach" stickyEnd>
+          <th class="text-center" mat-header-cell *matHeaderCellDef> Outreach Person </th>
+          <td class="text-center stv-oc-colmn" mat-cell *matCellDef="let element"> 
+            <mat-icon (click)="getUsersAllocatedToSchool(element)" class="material-symbols-outlined utv-edit-icon"
+              matTooltip="Show Team Details"
+            >
+              person
+            </mat-icon>  
+          </td>
+        </ng-container>
+
+        <!-- outreach Filter -->
+        <ng-container matColumnDef="outreach-filter" stickyEnd>
+          <th class="text-center" mat-header-cell *matHeaderCellDef> 
+
+            <div class="flex-center" style="visibility: hidden; width: 100px;">
+
+              <!-- <mat-form-field class="col-md-6 col-12 stv-form-field w-90" appearance="outline">
+              <mat-icon matSuffix class="search-icon">search</mat-icon>
+              <input type="text" placeholder="" matInput 
+                [formControl]="filterByField"
+                >
+              </mat-form-field> -->
+            </div>
+
+          </th>
+        </ng-container>
+
+        <!-- Action Column -->
+        <ng-container matColumnDef="actions" stickyEnd>
+          <th class="text-center" mat-header-cell *matHeaderCellDef> Actions </th>
+          <td class="text-center" mat-cell *matCellDef="let element" style="right: 0px !important; z-index: 9999 !important;"> 
+            <mat-icon (click)="navigateToSchoolDetails(element.id)" class="material-symbols-outlined utv-edit-icon"
+            matTooltip="Show School Details"
+            >
+              edit
+            </mat-icon>
+            <mat-icon *ngIf="isAuthorized" (click)="addPerson(element.id)" class="material-symbols-outlined utv-edit-icon"
+              matTooltip="Add/Edit Team"
+            >
+              person_add
+            </mat-icon>
+            <!-- <mat-icon class="material-symbols-outlined utv-delete-icon">
+              delete
+            </mat-icon> -->
+          </td>
+        </ng-container>
+
+        <!-- Action Filter -->
+        <ng-container matColumnDef="actions-filter" stickyEnd>
+          <th class="text-center" mat-header-cell *matHeaderCellDef> 
+
+            <div class="flex-center" style="visibility: hidden; width: 60px;">
+
+              <!-- <mat-form-field class="col-md-6 col-12 stv-form-field w-90" appearance="outline">
+                <mat-icon matSuffix class="search-icon">search</mat-icon>
+                <input type="text" placeholder="" matInput 
+                  [formControl]="filterByField"
+                >
+              </mat-form-field> -->
+            </div>
+
+          </th>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true" class="h-42 utv-header-row" ></tr>
+        <tr mat-header-row *matHeaderRowDef="displayedFilterColumns; sticky: true" class="h-42" ></tr>
+        <tr class="h-42" mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+      <div *ngIf="!dataSource?.data?.length" class="no-record-msg">
+        No Records Available 
+      </div>
+    </div>
+
+    <div class="stv-paginator-container">
+      <mat-paginator showFirstLastButtons [pageSizeOptions]="pageSizeOptions" 
+        aria-label="Select page of school table"
+      >
+      </mat-paginator>
+    </div>
+  </mat-card>
+</div>
+
+  

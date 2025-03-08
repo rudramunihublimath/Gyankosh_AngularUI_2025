@@ -1,0 +1,141 @@
+/* You can add global styles to this file, and also import other style files */
+
+// html, body { height: 100%; }
+// body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+$primary-color: #f78300;
+$secondary-color: #f44336;
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  min-height: 100vh;
+  background: #e2e2e2;
+  font-size: 14px;
+}
+
+.primary-text {
+  color: $primary-color !important;
+}
+
+.secondary-text {
+  color: $secondary-color !important;
+}
+
+.primary-btn {
+  background: $primary-color !important;
+  color: #ffffff !important;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.h-100 {
+  height: 100%;
+}
+
+input {
+  position: inherit;
+  bottom: 8px;
+}
+
+.outlet-height {
+  height: calc(100% - 50px);
+}
+
+.outlet-overflow {
+  overflow: auto;
+}
+
+.d-flex {
+  display: flex;
+}
+.flex-center {
+  display: flex;
+  justify-content: center;
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+.text-end {
+  text-align: end;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.p-0 {
+  padding: 0 !important;
+}
+
+.p-default {
+  padding: 7px;
+}
+
+.mat-mdc-form-field-flex {
+  height: 42px;
+}
+
+.mat-mdc-text-field-wrapper .mat-mdc-form-field-flex .mat-mdc-floating-label {
+  top: 20px;
+}
+
+.mat-mdc-form-field {
+  margin-top: 0 !important;
+}
+
+.mat-mdc-select-trigger {
+  bottom: 6px;
+}
+
+.mat-mdc-option {
+  font-size: 14px !important;
+  min-height: 32px !important;
+}
+
+.mat-radio-ripple {
+  display: none;
+}
+
+.mdc-radio__background {
+  width: 16px !important;
+  height: 16px !important;
+}
+
+.mdc-radio__inner-circle {
+  border-width: 8px !important;
+}
+
+.ft-sz-500 {
+  font-size: 500;
+}
+
+.mb-8 {
+  margin-bottom: 8px !important;
+}
+
+.custom-label {
+  letter-spacing: 0.4px !important;
+}
+
+input[type=radio].default {
+  accent-color: $secondary-color;
+}
+
+.a-link { 
+  text-decoration: none;
+}
+
+.a-link:hover { 
+  text-decoration: underline;
+  cursor: pointer;
+}

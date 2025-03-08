@@ -1,0 +1,72 @@
+<div *ngIf="teamList && teamForm" class="at-wrapper">
+    <!-- fxLayout="row" fxLayoutAlign="center center" -->
+    <section class="at-parent-card">
+        <div class="at-header">
+            <mat-card class="at-header-card">
+                <mat-card-content class="at-header-title secondary-text">
+                    <span class="title-text">{{header}}</span>
+                    <mat-icon (click)="close()" class="material-symbols-outlined close-icon">close</mat-icon>
+                </mat-card-content>
+            </mat-card>
+        </div>
+
+        <form [formGroup]="teamForm" class="at-form-container">
+        
+            <div class="row">
+
+                <mat-form-field class="col-md-6 col-12 at-form-field" appearance="outline">
+                    <mat-label>Select Team</mat-label>
+                    <mat-select formControlName="teamName" (selectionChange)="selectedTeam($event)">
+                      <mat-option *ngFor="let team of teamList" [value]="team">
+                        {{team}}
+                      </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <!-- <mat-form-field class="col-md-6 col-12 at-form-field" appearance="outline">
+                    <mat-label>User Id</mat-label>
+                    <input type="text" matInput placeholder="User Id" formControlName="userId" required>
+                </mat-form-field> -->
+
+                <mat-form-field class="col-md-6 col-12 at-form-field" appearance="outline">
+                    <mat-label>User</mat-label>
+                    <mat-icon matSuffix class="search-icon">search</mat-icon>
+                    <input type="text" placeholder="User" aria-label="Number" matInput 
+                      formControlName="userId" [matAutocomplete]="usr"
+                      required
+                    >
+                    <mat-autocomplete #usr="matAutocomplete" [displayWith]="displayUser" (optionSelected)="selectedUser($event)">
+                      <mat-option *ngFor="let user of filteredUser" [value]="user">
+                        {{user.firstname}} {{user.lastname}} ({{user.id}})
+                      </mat-option>
+                    </mat-autocomplete>
+                  </mat-form-field>
+
+                <!-- <mat-form-field *ngIf="existingUser?.id" class="col-md-6 col-12 at-form-field" appearance="outline">
+                    <mat-label>New User Id</mat-label>
+                    <input type="text" matInput placeholder="New User Id" formControlName="newUserId"
+                        [required]="existingUser?.id"
+                    >
+                </mat-form-field> -->
+                <mat-form-field *ngIf="existingUser?.id"  class="col-md-6 col-12 at-form-field" appearance="outline">
+                    <mat-label>New User</mat-label>
+                    <mat-icon matSuffix class="search-icon">search</mat-icon>
+                    <input type="text" placeholder="New User" aria-label="Number" matInput 
+                      formControlName="newUserId" [matAutocomplete]="nusr"
+                      [required]="existingUser?.id"
+                    >
+                    <mat-autocomplete #nusr="matAutocomplete" [displayWith]="displayNewUser" (optionSelected)="selectedUser($event)">
+                      <mat-option *ngFor="let user of filteredUser" [value]="user">
+                        {{user.firstname}} {{user.lastname}} ({{user.id}})
+                      </mat-option>
+                    </mat-autocomplete>
+                  </mat-form-field>
+            </div>
+
+        </form>
+        <div *ngIf="isAuthorized" class="col-md-12 text-center btn-container">
+            <button [disabled]="teamForm.invalid" (click)="saveTeam(true)" class="save-btn mr-16" mat-flat-button color="warn">Save</button>
+            <!-- <button [disabled]="teamForm.invalid" (click)="saveTeam(false)" class="save-btn" mat-flat-button color="warn">Save And Add Other</button> -->
+        </div>
+    </section>
+</div>

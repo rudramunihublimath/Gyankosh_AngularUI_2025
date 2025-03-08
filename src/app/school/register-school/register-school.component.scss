@@ -1,0 +1,66 @@
+.rs-card {
+    width: 95%;
+    min-height: 85vh;
+    margin: 10px 0px;
+    font-family: "Poppins", sans-serif;
+
+    .right-section  {
+        background: antiquewhite;
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+    }
+    .left-section {
+        padding: 10px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        .title-container {
+            border-bottom: 1px solid darkgray;
+        }
+        .title-text{
+            // margin: 0;
+            // font-weight: 500;
+        }
+        .rs-form-field {
+            position: relative;
+            input {
+                position: inherit;
+                bottom: 12px;
+                font-size: 13px;
+            }
+            .search-icon {
+                padding: 7px;
+                padding-top: 16px;
+                font-size: 20px;
+            }
+        }
+
+        .save-btn {
+            font-size: 14px !important;
+            letter-spacing: 0.5px !important;
+            height: 28px !important;
+        }
+    }
+}
+
+
+::ng-deep .rs-form-field.mat-mdc-form-field .mdc-text-field--outlined .mdc-notched-outline--upgraded .mdc-floating-label--float-above {
+    font-size: 12px !important;
+    top: 25px !important;
+  }
+  
+  ::ng-deep .rs-form-field .mdc-text-field--outlined .mdc-floating-label {
+    font-size: 14px !important;
+    top: 14px !important;
+  }
+  
+  ::ng-deep .rs-form-field .mat-mdc-form-field-flex {
+      height: 28px;
+    }
+  
+  ::ng-deep .rs-form-field .mat-mdc-select-trigger {
+      bottom: 12px;
+  }
+  
+  ::ng-deep .rs-form-field .mat-mdc-select-value-text {
+      font-size: 14px;
+  }

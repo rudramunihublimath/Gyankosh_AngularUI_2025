@@ -1,0 +1,15 @@
+// // "@angular/material/prebuilt-themes/indigo-pink.css", ---> this path need to include in angular.json for default color palette theming 
+// // @import "../node_modules/@angular/material/theming";
+
+// @use '~@angular/material' as mat;
+// @include mat.core();
+
+
+
+// $my-primary: mat.define-palette($mat-teal, 800);
+// $my-accent: mat.define-palette($mat-light-green, 800);
+// $mat-warn: mat.define-palette($mat-orange, 800);
+
+// $my-theme: mat-light-theme($my-primary, $my-accent, $mat-orange);
+
+// @include angular-material-theme($my-theme);

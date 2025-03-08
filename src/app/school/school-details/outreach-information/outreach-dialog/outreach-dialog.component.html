@@ -1,0 +1,67 @@
+<div class="outreach-wrapper">
+    <!-- fxLayout="row" fxLayoutAlign="center center" -->
+    <section class="outreach-parent-card">
+        <div class="outreach-header">
+            <mat-card class="outreach-header-card">
+                <mat-card-content class="outreach-header-title secondary-text">
+                    <span class="title-text">{{header}}</span>
+                    <mat-icon (click)="close()" class="material-symbols-outlined close-icon">close</mat-icon>
+                </mat-card-content>
+            </mat-card>
+        </div>
+
+        <form [formGroup]="outReachForm" class="outreach-form-container">
+        
+            <div class="row">
+                <mat-form-field class="col-md-6 col-12 outreach-form-field" appearance="outline">
+                    <mat-label>Outreach Person</mat-label>
+                    <input type="text" matInput placeholder="Outreach Person" formControlName="outreachuserid" required>
+                </mat-form-field>
+
+                <mat-form-field *ngIf="data['id']" class="col-md-6 col-12 outreach-form-field" appearance="outline">
+                    <mat-label>Onboarding DateTime</mat-label>
+                    <input matInput [matDatepicker]="picker1" formControlName="outreach_assigneddate" required>
+                    <mat-datepicker-toggle matIconSuffix [for]="picker1">
+                        <mat-icon class="outreach-calender-icon" matDatepickerToggleIcon>today</mat-icon>
+                    </mat-datepicker-toggle>
+                    <mat-datepicker #picker1></mat-datepicker>
+                </mat-form-field>
+
+                <mat-form-field class="col-md-6 col-12 outreach-form-field" appearance="outline">
+                    <mat-label>Outreach Head</mat-label>
+                    <input type="text" matInput placeholder="Outreach Head" formControlName="outreachheaduserid" required>
+                </mat-form-field>
+
+                <mat-form-field *ngIf="data['id']" class="col-md-6 col-12 outreach-form-field" appearance="outline">
+                    <mat-label>Onboarding DateTime</mat-label>
+                    <input matInput [matDatepicker]="picker2" formControlName="outreachHead_assigneddate" required>
+                    <mat-datepicker-toggle matIconSuffix [for]="picker2">
+                        <mat-icon class="outreach-calender-icon" matDatepickerToggleIcon>today</mat-icon>
+                    </mat-datepicker-toggle>
+                    <mat-datepicker #picker2></mat-datepicker>
+                </mat-form-field>
+            </div>
+
+            <!-- <div class="row">
+                <mat-form-field class="col-md-6 col-12 outreach-form-field" appearance="outline">
+                    <mat-label>Outreach Head</mat-label>
+                    <input type="text" matInput placeholder="Outreach Head" formControlName="outreachheaduserid" required>
+                </mat-form-field>
+
+                <mat-form-field class="col-md-6 col-12 outreach-form-field" appearance="outline">
+                    <mat-label>Onboarding DateTime</mat-label>
+                    <input matInput [matDatepicker]="picker2" formControlName="outreachHead_assigneddate" required>
+                    <mat-datepicker-toggle matIconSuffix [for]="picker2">
+                        <mat-icon class="outreach-calender-icon" matDatepickerToggleIcon>today</mat-icon>
+                    </mat-datepicker-toggle>
+                    <mat-datepicker #picker2></mat-datepicker>
+                </mat-form-field>
+            </div> -->
+
+
+        </form>
+        <div *ngIf="isAuthorized" class="col-md-12 text-center btn-container">
+            <button (click)="submitOutReach()" class="save-btn" mat-flat-button color="warn">Save</button>
+        </div>
+    </section>
+</div>

@@ -1,0 +1,88 @@
+<div class="flag-wrapper">
+    <!-- fxLayout="row" fxLayoutAlign="center center" -->
+    <section class="flag-parent-card">
+        <div class="flag-header">
+            <mat-card class="flag-header-card">
+                <mat-card-content class="flag-header-title secondary-text">
+                    <span class="title-text">{{header}}</span>
+                    <mat-icon (click)="close()" class="material-symbols-outlined close-icon">close</mat-icon>
+                </mat-card-content>
+            </mat-card>
+        </div>
+
+        <form [formGroup]="flagForm" class="flag-form-container">
+        
+            <div class="row">
+                <mat-form-field class="col-md-6 col-12 flag-form-field" appearance="outline">
+                    <mat-label>School Active</mat-label>
+                    <mat-select formControlName="schoolActive">
+                      <mat-option *ngFor="let level of levels" [value]="level">
+                        {{level}}
+                      </mat-option>
+                    </mat-select>
+                </mat-form-field>
+    
+                <mat-form-field class="col-md-6 col-12 flag-form-field" appearance="outline">
+                    <mat-label>School Interested</mat-label>
+                    <mat-select formControlName="schoolInterested">
+                      <mat-option *ngFor="let level of levels" [value]="level">
+                        {{level}}
+                      </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div class="row">
+                <mat-form-field class="col-md-6 col-12 flag-form-field" appearance="outline">
+                    <mat-label>Deal Closed</mat-label>
+                    <mat-select formControlName="dealClosed">
+                      <mat-option *ngFor="let level of levels" [value]="level">
+                        {{level}}
+                      </mat-option>
+                    </mat-select>
+                </mat-form-field>
+    
+                <mat-form-field class="col-md-6 col-12 flag-form-field" appearance="outline">
+                    <mat-label>School Discontinued</mat-label>
+                    <mat-select (selectionChange)="selectedSchoolDiscontinued($event)" formControlName="isDiscontinued">
+                      <mat-option *ngFor="let level of levels" [value]="level">
+                        {{level}}
+                      </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div *ngIf="showSchollDiscontinuedFields" class="row">
+                <mat-form-field class="col-md-6 col-12 flag-form-field" appearance="outline">
+                    <mat-label>Reason Validated</mat-label>
+                    <mat-select formControlName="reasonValidated">
+                      <mat-option *ngFor="let level of levels" [value]="level">
+                        {{level}}
+                      </mat-option>
+                    </mat-select>
+                </mat-form-field>
+    
+                <mat-form-field class="col-md-6 col-12 flag-form-field" appearance="outline">
+                    <mat-label>Discontinued Date</mat-label>
+                    <input matInput [matDatepicker]="picker1" formControlName="discontinuedDate">
+                    <mat-datepicker-toggle matIconSuffix [for]="picker1">
+                        <mat-icon class="flag-calender-icon" matDatepickerToggleIcon>today</mat-icon>
+                    </mat-datepicker-toggle>
+                    <mat-datepicker #picker1></mat-datepicker>
+                </mat-form-field>
+            </div>
+
+            <div *ngIf="showSchollDiscontinuedFields" class="row">
+                <mat-form-field class="col-md-12 col-12 flag-form-field flag-container" appearance="outline">
+                    <mat-label>Reason for Discontinue</mat-label>
+                    <textarea rows="4" matInput placeholder="Reason for Discontinue" formControlName="reasonForDiscontinue"></textarea>
+                </mat-form-field>
+            </div>
+
+
+        </form>
+        <div *ngIf="isAuthorized" class="col-md-12 text-center btn-container">
+            <button (click)="submitFlag()" class="save-btn" mat-flat-button color="warn">Save</button>
+        </div>
+    </section>
+</div>

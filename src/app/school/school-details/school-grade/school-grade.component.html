@@ -1,0 +1,90 @@
+
+<ngx-spinner type="ball-scale-multiple"></ngx-spinner>
+<div class="flex-center grade-details-main">
+  <div class="table-card">
+    <div class="table-title">
+      <!-- <span class="utv-title">Point of Contacts</span> -->
+      <!-- <button *ngIf="isAuthorized" (click)="openGradeDetails(false)" class="add-btn" mat-raised-button color="warn">Add Grade</button> -->
+      <div class="row">
+        <!-- <button *ngIf="isAuthorized" (click)="getGrades()" class="add-btn" mat-raised-button color="warn">Add POC</button> -->
+        <!-- <mat-form-field class="col-md-6 col-12 grade-form-field w-100" appearance="outline">
+            <mat-label>Grade Year</mat-label>
+            <mat-select (selectionChange)="selectedYear($event)" placeholder="Grade Year" [formControl]="yearControl">
+              <mat-option *ngFor="let year of gradeYears" [value]="year">
+                {{year}}
+              </mat-option>
+            </mat-select>
+        </mat-form-field> -->
+    </div>
+    </div>
+    <div class="table-container">
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">  
+        <!-- Position Column -->
+        <ng-container matColumnDef="position">
+          <th class="text-center" mat-header-cell *matHeaderCellDef> No. </th>
+          <td class="text-center" mat-cell *matCellDef="let element; let i=index"> {{i+1}} </td>
+          <td class="text-center" mat-footer-cell *matFooterCellDef> Total </td>
+        </ng-container>
+
+    
+        <!-- Year Name Column -->
+        <!-- <ng-container matColumnDef="year">
+          <th class="text-center" mat-header-cell *matHeaderCellDef> Year </th>
+          <td class="text-center" mat-cell *matCellDef="let element"> {{element.year}} </td>
+        </ng-container> -->
+
+      
+        <!-- Grade Name Column -->
+        <ng-container matColumnDef="gradeName">
+          <th class="text-center" mat-header-cell *matHeaderCellDef> Grade Name </th>
+          <td class="text-center" mat-cell *matCellDef="let element"> {{element.gradeName}} </td>
+          <td class="text-center" mat-footer-cell *matFooterCellDef>  </td>
+        </ng-container>
+
+        <!-- Total Student Count Column -->
+        <ng-container matColumnDef="totalStudentCount">
+            <th class="text-center" mat-header-cell *matHeaderCellDef> Total Student </th>
+            <td class="text-center" mat-cell *matCellDef="let element"> {{element.totalStudentCount}} </td>
+            <td class="text-center" mat-footer-cell *matFooterCellDef> {{getTotalStudentCount()}} </td>
+        </ng-container>
+
+        <!-- Books Given Count Column -->
+        <ng-container matColumnDef="booksGivenCount">
+            <th class="text-center" mat-header-cell *matHeaderCellDef> No. of Books Given </th>
+            <td class="text-center" mat-cell *matCellDef="let element"> {{element.booksGivenCount}} </td>
+            <td class="text-center" mat-footer-cell *matFooterCellDef> {{getTotalBooksCount()}} </td>
+        </ng-container>
+      
+        <!-- Action Column -->
+        <ng-container matColumnDef="actions">
+          <th class="text-center" mat-header-cell *matHeaderCellDef> Actions </th>
+          <td class="text-center" mat-cell *matCellDef="let element"> 
+            <mat-icon (click)="openGradeDetails(true, element)" class="material-symbols-outlined utv-edit-icon">
+              edit
+            </mat-icon>
+          </td>
+          <td class="text-center" mat-footer-cell *matFooterCellDef>  </td>
+        </ng-container>
+
+        <!-- Action Filter -->
+        <ng-container matColumnDef="actionFilter">
+          <th mat-header-cell *matHeaderCellDef> </th>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true" class="h-42 utv-header-row" ></tr>
+        <tr class="h-42" mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        <tr class="h-42 sg-tbl-footer" mat-footer-row *matFooterRowDef="displayedColumns; sticky: true"></tr>
+      </table>
+      <div *ngIf="!dataSource.length" class="no-record-msg">
+        No Records Available 
+      </div>
+    </div>
+    
+    
+    
+    
+    
+</div>
+</div>
+
+  

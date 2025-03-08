@@ -1,0 +1,113 @@
+.agreement-wrapper {
+    padding: 20px 30px;
+    font-family: ui-sans-serif;
+    .agreement-parent-card {
+        position: relative;
+        .agreement-header {
+            .agreement-header-card {
+                background: darkorange;
+                text-align: center;
+                .agreement-header-title {
+                    font-size: 20px;
+                    font-weight: 600;
+                    padding: 10px;
+                    font-family: "Poppins", sans-serif;
+                    .title-text {
+                        color: #ffffff;
+                    }
+                }
+                .close-icon {
+                    float: right;
+                    color: #ffffff;
+                    cursor: pointer;
+                }
+            }
+        }
+
+        .agreement-form-container {
+            // overflow: auto;
+            margin-top: 20px;
+
+            .agreement-form-field {
+                position: relative;
+                input {
+                    position: inherit;
+                    bottom: 12px;
+                    font-size: 13px;
+                }
+                .search-icon {
+                    padding: 7px;
+                    padding-top: 16px;
+                    font-size: 20px;
+                }
+                .agreement-calender-icon {
+                    padding: 6px;
+                    font-size: 18px;
+                }
+            }
+
+            .agreement-container {
+                height: 100px;
+                textarea{
+                    position: inherit;
+                    bottom: 12px;
+                    font-size: 13px;
+                    resize: none;
+                    height: 70px;
+                }
+            }
+        }
+
+        .save-btn {
+            font-size: 14px !important;
+            letter-spacing: 0.5px !important;
+            height: 28px !important;
+        }
+
+        .mlr-14 {
+            margin: 0 14px;
+        }
+    }  
+}
+
+.ad-link-icon-wrapper {
+    display: flex;
+    margin-top: 16px;
+    .ad-link-icon {
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    .launch-icon {
+        color: #005aff;
+    }
+    .upload-icon {
+
+    }
+
+    .reset-icon {
+        color: red;
+    }
+}
+
+::ng-deep .agreement-form-field.mat-mdc-form-field .mdc-text-field--outlined .mdc-notched-outline--upgraded .mdc-floating-label--float-above {
+    font-size: 12px !important;
+    top: 25px !important;
+}
+  
+::ng-deep .agreement-form-field .mdc-text-field--outlined .mdc-floating-label {
+    font-size: 14px !important;
+    top: 14px !important;
+}
+  
+::ng-deep .agreement-form-field .mat-mdc-form-field-flex {
+    height: 28px;
+}
+  
+::ng-deep .agreement-form-field .mat-mdc-select-trigger {
+    bottom: 12px;
+}
+  
+::ng-deep .agreement-form-field .mat-mdc-select-value-text {
+    font-size: 14px;
+}

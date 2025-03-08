@@ -1,0 +1,54 @@
+.od-wrapper {
+    padding: 20px 30px;
+    font-family: ui-sans-serif;
+    .od-parent-card {
+        position: relative;
+        .od-header {
+            .od-header-card {
+                background: darkorange;
+                text-align: center;
+                .od-header-title {
+                    font-size: 20px;
+                    font-weight: 600;
+                    padding: 10px;
+                    font-family: "Poppins", sans-serif;
+                    .title-text {
+                        color: #ffffff;
+                    }
+                }
+                .close-icon {
+                    float: right;
+                    color: #ffffff;
+                    cursor: pointer;
+                }
+            }
+        }
+
+        .od-padding {
+            padding: 20px 15px;
+        }
+
+        .mb-10 {
+            margin-bottom: 10px;
+        }
+
+        .ft-sz-16 {
+            font-size: 16px;
+        }
+               
+
+        .save-btn {
+            font-size: 14px !important;
+            letter-spacing: 0.5px !important;
+            height: 28px !important;
+        }
+    }  
+}
+
+.no-team-detail {
+    text-align: center;
+    margin: 16px 0;
+    font-size: 20px;
+    font-weight: 500;
+    color: gray;
+}

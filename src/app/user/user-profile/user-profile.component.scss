@@ -1,0 +1,223 @@
+// body {
+//     background: rgb(99, 39, 120)
+// }
+
+.container-bgd-img {
+    background-image: url("/root/MBP/IMAGES/logo/bgImg1.png");
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    background-size: cover;
+    background-size: 18%;
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border-color: #BA68C8
+}
+
+.profile-button {
+    background: rgb(99, 39, 120);
+    box-shadow: none;
+    border: none
+}
+
+.profile-button:hover {
+    background: #682773
+}
+
+.profile-button:focus {
+    background: #682773;
+    box-shadow: none
+}
+
+.profile-button:active {
+    background: #682773;
+    box-shadow: none
+}
+
+.back:hover {
+    color: #682773;
+    cursor: pointer
+}
+
+.labels {
+    font-size: 11px
+}
+
+.add-experience:hover {
+    background: #BA68C8;
+    color: #fff;
+    cursor: pointer;
+    border: solid 1px #BA68C8
+}
+
+.profile-card {
+    width: 95%;
+    margin: 10px 0px;
+    .of-auto {
+        overflow: auto;
+    }
+    .up-form-field {
+        position: relative;
+        input {
+            position: inherit;
+            bottom: 12px;
+            font-size: 13px;
+        }
+        .up-search-icon {
+            padding: 2px;
+            padding-top: 12px;
+            font-size: 18px;
+        }
+        .up-calender-icon {
+            padding: 6px;
+            font-size: 18px;
+        }
+    }
+    .addr-container {
+        position: relative;
+        .addr-wrapper {
+            position: inherit;
+            top: 20px;
+        }
+    }
+
+    .btn-container {
+        position: relative;
+        margin-bottom: 10px;
+        .save-btn {
+            // position: inherit;
+            // bottom: 20px;
+            font-size: 14px !important;
+            letter-spacing: 0.5px !important;
+            height: 28px !important;
+        }
+    }
+    .mb-cust-10 {
+        margin-bottom: 10.5px !important;
+    }
+    .mb-cust-11 {
+        margin-bottom: 11px !important;
+    }
+}
+
+.mli-ht {
+    height: 32px !important;
+}
+
+.img-asp-ratio  {
+    aspect-ratio: attr(width) / attr(height);
+}
+
+.img-container {
+    position: relative;
+    .upload-icon {
+        position: absolute;
+        bottom: -9%;
+        right: 43%;
+    }
+    .close-btn {
+        position: absolute;
+        right: 0%;
+        top: 5%;
+        font-size: 20px;
+        color: red;
+        cursor: pointer;
+    }
+
+    .cover-img {
+        object-fit: cover;
+    }
+}
+
+.pb-20 {
+    padding-top: 20px;
+}
+
+.up-select-readonly {
+    pointer-events: none;
+}
+
+.up-sts-chip {
+    padding: 0;
+    height: 25px;
+    background: #ffffff !important;
+    .active-chip {
+        display: flex;
+        align-items: center;
+        // color: #fff;
+        .active-icon {
+            font-size: 17px;
+            padding-top: 3px;
+        }
+        .active-text {
+            font-size: 12px;
+            margin-left: -6px;
+            letter-spacing: 0.5px;
+        }
+    }
+}
+
+.green-chip {
+    border: 2px solid #008000;
+    .green-text {
+        color: #008000;
+        font-weight: 500;
+    }
+}
+
+.red-chip {
+    border: 2px solid #ff0000;
+    .red-text {
+        color: #ff0000;
+        font-weight: 500;
+    }
+
+}
+
+.up-launch-icon {
+    font-size: 18px;
+    padding: 0 !important;
+    padding-top: 10px !important;
+    padding-right: 4px;
+    cursor: pointer;
+    color: #005aff;
+}
+
+
+::ng-deep .mli-ht .mat-mdc-list-item-unscoped-content {
+    font-size: 13px;
+}
+
+::ng-deep .up-form-field.mat-mdc-form-field .mdc-text-field--outlined .mdc-notched-outline--upgraded .mdc-floating-label--float-above {
+  font-size: 12px !important;
+  top: 25px !important;
+}
+
+::ng-deep .up-form-field .mdc-text-field--outlined .mdc-floating-label {
+  font-size: 14px !important;
+  top: 14px !important;
+}
+
+::ng-deep .up-form-field .mat-mdc-form-field-flex {
+    height: 28px;
+  }
+
+::ng-deep .up-form-field .mat-mdc-select-trigger {
+    bottom: 12px;
+}
+
+::ng-deep .up-form-field .mat-mdc-select-value-text {
+    font-size: 14px;
+}
+
+::ng-deep .up-gender .mat-mdc-form-field-subscript-wrapper {
+    height: 0;
+  }
+
+  ::ng-deep .up-sts-chip .mat-mdc-standard-chip {
+    padding-left: 7px;
+    padding-right: 10px;
+  }
+
+

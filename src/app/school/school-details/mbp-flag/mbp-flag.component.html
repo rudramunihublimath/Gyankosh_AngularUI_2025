@@ -1,0 +1,183 @@
+<ngx-spinner type="ball-scale-multiple"></ngx-spinner>
+
+<!-- MBP FLAG TABLE -->
+<div class="flex-center flag-details-main">
+    <div class="table-card">
+      <div class="table-title">
+        <span class="utv-title">MBP Flag</span>
+        <!-- <button *ngIf="isAuthorized && !dataSource[0]?.id" (click)="openFlagDetails(false)" class="add-btn" mat-raised-button color="warn">Add Flag</button> -->
+      </div>
+      <div class="table-container">
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">  
+          <!-- Position Column -->
+          <!-- <ng-container matColumnDef="position">
+            <th class="text-center" mat-header-cell *matHeaderCellDef> No. </th>
+            <td class="text-center" mat-cell *matCellDef="let element; let i=index"> {{i+1}} </td>
+          </ng-container> -->
+  
+          <!-- School Active Column -->
+          <ng-container matColumnDef="schoolActive">
+              <th class="text-center" mat-header-cell *matHeaderCellDef> School Active </th>
+              <td class="text-center" mat-cell *matCellDef="let element"> {{element.schoolActive}} </td>
+          </ng-container>
+
+          <!-- School Interested Column -->
+          <ng-container matColumnDef="schoolInterested">
+            <th class="text-center" mat-header-cell *matHeaderCellDef> School Interested </th>
+            <td class="text-center" mat-cell *matCellDef="let element"> {{element.schoolInterested}} </td>
+        </ng-container>
+
+        <!-- Deal Closed Column -->
+        <ng-container matColumnDef="dealClosed">
+            <th class="text-center" mat-header-cell *matHeaderCellDef> Deal Closed </th>
+            <td class="text-center" mat-cell *matCellDef="let element"> {{element.dealClosed}} </td>
+        </ng-container>
+
+        <!-- School Discontinued Column -->
+        <ng-container matColumnDef="isDiscontinued">
+            <th class="text-center" mat-header-cell *matHeaderCellDef> School Discontinued </th>
+            <td class="text-center" mat-cell *matCellDef="let element"> {{element.isDiscontinued}} </td>
+        </ng-container>
+  
+          <!-- Discontinued Date Column -->
+          <ng-container matColumnDef="discontinuedDate">
+            <th class="text-center" mat-header-cell *matHeaderCellDef> Discontinued Date </th>
+            <td class="text-center" mat-cell *matCellDef="let element"> 
+              <span *ngIf="element.discontinuedDate; else noDate">
+                {{element.discontinuedDate | date: 'longDate'}} 
+              </span>
+              <ng-template #noDate>
+                -
+              </ng-template>
+            </td>
+          </ng-container>
+  
+          <!-- Reason Validated Column -->
+          <ng-container matColumnDef="reasonValidated">
+              <th class="text-center" mat-header-cell *matHeaderCellDef> Reason Validated </th>
+              <td class="text-center" mat-cell *matCellDef="let element"> {{element.reasonValidated? element.reasonValidated : '-'}} </td>
+          </ng-container>
+          
+          <!-- Reason For Discontinue Column -->
+          <ng-container matColumnDef="reasonForDiscontinue">
+            <th class="" mat-header-cell *matHeaderCellDef> Discontinue Reason</th>
+            <td class="" mat-cell *matCellDef="let element"> 
+              <div class="rdc-ellipsis" 
+                matTooltip="{{element.reasonForDiscontinue}}"
+              >
+                {{element.reasonForDiscontinue ? element.reasonForDiscontinue : '-'}} 
+              </div>
+            </td>
+        </ng-container>
+  
+          <!-- Action Column -->
+          <ng-container matColumnDef="actions">
+            <th class="text-center" mat-header-cell *matHeaderCellDef> Actions </th>
+            <td class="text-center" mat-cell *matCellDef="let element"> 
+              <mat-icon (click)="openFlagDetails(true, element)" class="material-symbols-outlined utv-edit-icon">
+                edit
+              </mat-icon>
+              <!-- <mat-icon class="material-symbols-outlined utv-delete-icon">
+                delete
+              </mat-icon> -->
+            </td>
+          </ng-container>
+  
+          <!-- Action Filter -->
+          <ng-container matColumnDef="actionFilter">
+            <th mat-header-cell *matHeaderCellDef> </th>
+          </ng-container>
+        
+          <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true" class="h-42 utv-header-row" ></tr>
+          <tr class="h-42" mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <div *ngIf="!dataSource.length" class="no-record-msg">
+          No Records Available 
+        </div>
+      </div>
+    </div>
+</div>
+
+<!-- AGREEMENT TABLE -->
+
+<div class="flex-center flag-details-main">
+    <div class="table-card">
+      <div class="table-title">
+        <span class="utv-title">Agreement</span>
+        <!-- isAuthorized && !agreementDataSource[0]?.id -->
+      </div>
+      <div class="table-container">
+        <table mat-table [dataSource]="agreementDataSource" class="mat-elevation-z8">  
+            <!-- Position Column -->
+            <!-- <ng-container matColumnDef="position">
+                <th class="text-center" mat-header-cell *matHeaderCellDef> No. </th>
+                <td class="text-center" mat-cell *matCellDef="let element; let i=index"> {{i+1}} </td>
+            </ng-container> -->
+  
+            <!-- Agreement Completed Column -->
+            <ng-container matColumnDef="agreementCompleted">
+                <th class="text-center" mat-header-cell *matHeaderCellDef> Agreement Completed </th>
+                <td class="text-center" mat-cell *matCellDef="let element"> {{element.agreementCompleted}} </td>
+            </ng-container>
+        
+            <!-- Agreement Completed Date Column -->
+            <ng-container matColumnDef="agreementCompletedDate">
+                <th class="text-center" mat-header-cell *matHeaderCellDef> Agreement Completed Date </th>
+                <td class="text-center" mat-cell *matCellDef="let element"> 
+                  <span *ngIf="element.agreementCompletedDate; else noDate">
+                    {{element.agreementCompletedDate | date: 'longDate'}} 
+                  </span>
+                  <ng-template #noDate>
+                    -
+                  </ng-template>
+                </td>
+            </ng-container>
+
+            <!-- Agreement Scan Copy Link Column -->
+            <ng-container matColumnDef="agreementScanCopyLink">
+                <th class="" mat-header-cell *matHeaderCellDef> Agreement Link </th>
+                <!-- class="text-center" -->
+                <td class="" mat-cell *matCellDef="let element"> 
+                  <a class="a-link" href="{{element.agreementScanCopyLink}}" target="_blank">
+                    <div class="agreement-link-ellipsis"
+                      matTooltip="{{element.agreementScanCopyLink}}"
+                    >
+                      {{element.agreementScanCopyLink}} 
+                    </div>
+                  </a>
+                </td>
+            </ng-container>
+
+            <!-- uploaded By UserId Column -->
+            <ng-container matColumnDef="uploadedByUserId">
+                <th class="text-center" mat-header-cell *matHeaderCellDef> Uploaded By </th>
+                <td class="text-center" mat-cell *matCellDef="let element"> 
+                  <a class="a-link" *ngIf="element.uploadedByUserId; else noLink" (click)="navigateToProfile(element.uploadedByUserId)">
+                    <!-- {{element.uploadedByUserId}}  -->
+                    {{loggedInUserDetails.firstname}} {{loggedInUserDetails.lastname}}
+                  </a> 
+                  <ng-template #noLink>
+                    -
+                  </ng-template>
+                </td>
+            </ng-container>
+
+            <!-- Action Column -->
+          <ng-container matColumnDef="actions">
+            <th class="text-center" mat-header-cell *matHeaderCellDef> Actions </th>
+            <td class="text-center" mat-cell *matCellDef="let element"> 
+              <mat-icon (click)="openAgreementDetails(true, element)" class="material-symbols-outlined utv-edit-icon">
+                edit
+              </mat-icon>
+            </td>
+          </ng-container>
+  
+          <tr mat-header-row *matHeaderRowDef="agreementDisplayedColumns; sticky: true" class="h-42 utv-header-row" ></tr>
+          <tr class="h-42" mat-row *matRowDef="let row; columns: agreementDisplayedColumns;"></tr>
+        </table>
+        <div *ngIf="!agreementDataSource.length" class="no-record-msg">
+          No Records Available 
+        </div>
+      </div>
+    </div>
+</div>

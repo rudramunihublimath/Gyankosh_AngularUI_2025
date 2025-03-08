@@ -1,0 +1,95 @@
+
+<ngx-spinner type="ball-scale-multiple">File Downloading Please wait...</ngx-spinner>
+<div class="flex-center h-100">
+  <mat-card class="report-card">
+    <div class="report-header">
+      <span class="report-title">Reports</span>
+    </div>
+
+    <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Export School Data
+            </mat-panel-title>
+            <mat-panel-description>
+              Download all details
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <div class="d-flex">
+            <mat-form-field class="col-md-3 col-12 report-form-field" appearance="outline">
+              <mat-label>State</mat-label>
+              <mat-select required
+              (selectionChange)="selectedState($event)" multiple
+              >
+                <mat-option *ngFor="let state of states" [value]="state">
+                  {{state}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <button *ngIf="isReadyToDownload"  class="report-dwnld-btn" mat-raised-button color="warn"
+              (click)="downloadSchoolData()"
+            >
+              Download
+            </button>
+          </div>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel (opened)="getReport2()">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              My Allocated Schools
+            </mat-panel-title>
+            <mat-panel-description>
+              List of allocated schools
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <div class="table-container">
+            <table mat-table [dataSource]="report2DataSource" class="mat-elevation-z8">  
+                <!-- Position Column -->
+                <ng-container matColumnDef="id">
+                    <th class="text-center" mat-header-cell *matHeaderCellDef> No. </th>
+                    <td class="text-center" mat-cell *matCellDef="let element; let i=index"> {{i+1}} </td>
+                </ng-container>
+      
+                <!-- School Name Column -->
+                <ng-container matColumnDef="schoolName">
+                  <!-- class="text-center" -->
+                    <th mat-header-cell *matHeaderCellDef> School Name </th>
+                    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                </ng-container>
+            
+                <!-- Agreement Completed Date Column -->
+                <ng-container matColumnDef="nextAppointment">
+                    <th class="text-center" mat-header-cell *matHeaderCellDef> Next Appointment </th>
+                    <td class="text-center" mat-cell *matCellDef="let element"> 
+                      <span *ngIf="element.nextAppointment; else noDate">
+                        {{element.nextAppointment | date: 'longDate'}}
+                      </span>
+                      <ng-template #noDate>
+                        -
+                      </ng-template>
+                    </td>
+                </ng-container>
+    
+                
+      
+              <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true" class="h-42 report2-header-row" ></tr>
+              <tr class="h-42" mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+            <div *ngIf="!report2DataSource.length" class="no-record-msg">
+              No Records Available 
+            </div>
+          </div>
+        </mat-expansion-panel>
+        
+      </mat-accordion>
+
+  </mat-card>
+
+
+  
+
+</div>
+
+  

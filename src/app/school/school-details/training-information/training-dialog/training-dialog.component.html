@@ -1,0 +1,65 @@
+<div class="trainer-wrapper">
+    <!-- fxLayout="row" fxLayoutAlign="center center" -->
+    <section class="trainer-parent-card">
+        <div class="trainer-header">
+            <mat-card class="trainer-header-card">
+                <mat-card-content class="trainer-header-title secondary-text">
+                    <span class="title-text">{{header}}</span>
+                    <mat-icon (click)="close()" class="material-symbols-outlined close-icon">close</mat-icon>
+                </mat-card-content>
+            </mat-card>
+        </div>
+
+        <form [formGroup]="trainerForm" class="trainer-form-container">
+        
+            <!-- <div class="row">
+                <mat-form-field class="col-md-6 col-12 trainer-form-field" appearance="outline">
+                    <mat-label>Trainer Email</mat-label>
+                    <input type="text" matInput placeholder="Trainer Email" formControlName="trainTheTrainersId" required>
+                </mat-form-field>
+
+                <mat-form-field class="col-md-6 col-12 trainer-form-field" appearance="outline">
+                    <mat-label>Trainer Head Email</mat-label>
+                    <input type="text" matInput placeholder="Trainer Head Email" formControlName="trainTheTrainerHeadId" required>
+                </mat-form-field>
+
+                
+                
+            </div> -->
+
+            <div class="row">
+                <mat-form-field class="col-md-4 col-12 trainer-form-field" appearance="outline">
+                    <mat-label>Date of Completion</mat-label>
+                    <input matInput [matDatepicker]="picker1" formControlName="dateofCompletion">
+                    <mat-datepicker-toggle matIconSuffix [for]="picker1">
+                        <mat-icon class="trainer-calender-icon" matDatepickerToggleIcon>today</mat-icon>
+                    </mat-datepicker-toggle>
+                    <mat-datepicker #picker1></mat-datepicker>
+                </mat-form-field>
+                <mat-form-field class="col-md-4 col-12 trainer-form-field" appearance="outline">
+                    <mat-label>Is Training Completed</mat-label>
+                    <mat-select formControlName="trainingPartCompleted">
+                      <mat-option *ngFor="let binary of binaryAns" [value]="binary">
+                        {{binary}}
+                      </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="col-md-4 col-12 trainer-form-field" appearance="outline">
+                    <mat-label>Is Date Validated</mat-label>
+                    <mat-select formControlName="dataValidated">
+                      <mat-option *ngFor="let binary of binaryAns" [value]="binary">
+                        {{binary}}
+                      </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <!-- <mat-slide-toggle class="col-md-4 col-12 trainer-form-field">Is training Completed</mat-slide-toggle>
+                <mat-slide-toggle class="col-md-4 col-12 trainer-form-field">Is Date Validated</mat-slide-toggle> -->
+            </div>
+
+
+        </form>
+        <div *ngIf="isAuthorized" class="col-md-12 text-center btn-container">
+            <button (click)="submitTrainer()" class="save-btn" mat-flat-button color="warn">Save</button>
+        </div>
+    </section>
+</div>

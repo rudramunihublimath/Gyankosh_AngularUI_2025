@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+
+section {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  
+  .imgBx {
+    position: relative;
+    width: 50%;
+    height: 100%;
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: fill;
+    }
+    .org-name {
+      position: absolute;
+      z-index: 1;
+      top: 50%;
+      left: 40%;
+      font-size: 70px;
+      font-family: fantasy;
+      // color: linear-gradient(225deg, #e91e63, #03a9f4);
+      // background: linear-gradient(to right, #e91e63,#03a9f4);
+      // -webkit-text-fill-color: transparent;
+      // -webkit-background-clip: text;
+    }
+  }
+  .imgBx::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    // background: linear-gradient(225deg, #e91e63, #03a9f4);
+    z-index: 1;
+    mix-blend-mode: screen;
+  }
+  .contentBx {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .formBx {
+      width: 50%;
+      .login-txt {
+        font-size: 1.5em;
+        font-weight: 900;
+        color: #607d8b;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+        border-bottom: 4px solid #f38343; //#ff4584;
+        display: inline-block;
+        letter-spacing: 1px;
+      }
+      .signup-link {
+        margin-top: 1%;
+        a {
+          text-decoration: none;
+          color: #5376d4;
+          cursor: pointer;
+          font-weight: 600;
+        }
+
+        a:hover {
+          text-decoration: underline;
+        }
+      }
+
+    }
+  }
+}
+
+.w-100 {
+  width: 100%
+}
+
+.mt-16 {
+  margin-top: 16px !important;
+}
+
+@media (max-width: 768px) {
+  section {
+    .imgBx {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+    .contentBx {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1;
+      .formBx {
+        width: 100%;
+        padding: 40px;
+        margin: 50px;
+        background: rgba($color: #fff, $alpha: 0.9);
+        .signup-link {
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}
+
+::ng-deep .mat-form-field-infix {
+  padding-top: 0.5em !important;
+}
+
+::ng-deep .mat-form-field-label-wrapper {
+  top: -1.15em !important;
+}
+

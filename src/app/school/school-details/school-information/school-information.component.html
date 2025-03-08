@@ -1,0 +1,149 @@
+<ngx-spinner type="ball-scale-multiple"></ngx-spinner>
+<section *ngIf="schoolDetails" class="school-info-section">
+
+    <form [formGroup]="schoolForm" class="left-section">
+        <div class="row">
+            <mat-form-field class="col-md-3 col-12 si-form-field" appearance="outline">
+                <mat-label>School Name</mat-label>
+                <input [readonly]="!isAuthorized" type="text" matInput placeholder="School Name" formControlName="name" required>
+            </mat-form-field>
+            <mat-form-field [ngClass]="{'si-select-readonly': !isAuthorized}" class="col-md-3 col-12 si-form-field" appearance="outline">
+                <mat-label>Board</mat-label>
+                <mat-select multiple formControlName="board" required>
+                  <mat-option *ngFor="let board of boards" [value]="board">
+                    {{board}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            <mat-form-field class="col-md-3 col-12 si-form-field" appearance="outline">
+                <mat-label>Email</mat-label>
+                <input [readonly]="!isAuthorized" type="text" matInput placeholder="Email" formControlName="email" required>
+            </mat-form-field>
+            <mat-form-field class="col-md-3 col-12 si-form-field" appearance="outline">
+                <mat-label>Website URL</mat-label>
+                <input [readonly]="!isAuthorized" type="text" matInput placeholder="Website URL" formControlName="websiteURL" required>
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field class="col-md-6 col-12 si-form-field" appearance="outline">
+                <mat-label>Address Line 1</mat-label>
+                <input [readonly]="!isAuthorized" type="text" matInput placeholder="Address Line 1" formControlName="address1" required>
+            </mat-form-field>
+
+            <mat-form-field class="col-md-3 col-12 si-form-field" appearance="outline">
+              <mat-label>Country</mat-label>
+              <mat-icon matSuffix class="search-icon">search</mat-icon>
+              <input [readonly]="!isAuthorized" type="text" placeholder="Country" aria-label="Number" matInput 
+                formControlName="country" [matAutocomplete]="ctry"
+              >
+              <mat-autocomplete #ctry="matAutocomplete" (optionSelected)="selectedCountry($event)">
+                <mat-option *ngFor="let country of filteredCountries | async" [value]="country">
+                  {{country}}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+            
+            <mat-form-field class="col-md-3 col-12 si-form-field" appearance="outline"
+              [ngClass]="{'si-select-readonly': !isAuthorized}"
+            >
+              <mat-label>State</mat-label>
+              <mat-select formControlName="state" required
+              (selectionChange)="selectedState($event)"
+              >
+                <mat-option *ngFor="let state of states" [value]="state">
+                  {{state}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            
+        </div>
+        <div class="row">
+            <mat-form-field [ngClass]="{'si-select-readonly': !isAuthorized}" class="col-md-3 col-12 si-form-field" appearance="outline">
+              <mat-label>City</mat-label>
+              <mat-select formControlName="city" required>
+                <mat-option *ngFor="let city of cities" [value]="city">
+                  {{city}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="col-md-3 col-12 si-form-field" appearance="outline">
+                <mat-label>Pin Code</mat-label>
+                <input [readonly]="!isAuthorized" type="text" matInput placeholder="Pin Code" formControlName="pincode" required>
+            </mat-form-field>
+
+            <mat-form-field class="col-md-3 col-12 si-form-field" appearance="outline">
+              <mat-label>Contact No. 1</mat-label>
+              <input [readonly]="!isAuthorized" type="text" matInput placeholder="Contact No. 1" formControlName="contactNum1" required>
+            </mat-form-field>
+    
+            <mat-form-field class="col-md-3 col-12 si-form-field" appearance="outline">
+              <mat-label>Contact No. 2</mat-label>
+              <input [readonly]="!isAuthorized" type="text" matInput placeholder="Contact No. 2" formControlName="contactNum2">
+            </mat-form-field>
+
+        </div>
+
+        <div class="row">
+            <mat-form-field [ngClass]="{'si-select-readonly': !isAuthorized}" class="col-md-3 col-12 si-form-field" appearance="outline">
+                <mat-label>Target Phase</mat-label>
+                <mat-select formControlName="targetPhase" required>
+                  <mat-option *ngFor="let phase of phases" [value]="phase">
+                    {{phase}}
+                  </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="col-md-3 col-12 si-form-field" appearance="outline">
+                <mat-label>Reference Person Name</mat-label>
+                <input [readonly]="!isAuthorized" type="text" matInput placeholder="Reference Person Name" formControlName="refPersonName">
+            </mat-form-field>
+
+            <mat-form-field class="col-md-3 col-12 si-form-field" appearance="outline">
+                <mat-label>Reference Person Contact</mat-label>
+                <input [readonly]="!isAuthorized" type="text" matInput placeholder="Reference Person Contact" formControlName="refPersonContactNum">
+            </mat-form-field>
+
+            <mat-form-field class="col-md-3 col-12 si-form-field" appearance="outline">
+              <mat-label>MBP Person Name</mat-label>
+              <input [readonly]="!isAuthorized" type="text" matInput placeholder="MBP Person Name" formControlName="mbpPersonName">
+          </mat-form-field>
+        </div>
+
+        <div class="row">
+            
+            <mat-form-field class="col-md-3 col-12 si-form-field" appearance="outline">
+                <mat-label>MBP Person Contact</mat-label>
+                <input [readonly]="!isAuthorized" type="text" matInput placeholder="MBP Person Contact" formControlName="mbpPersonContactNum">
+            </mat-form-field>
+
+            <mat-form-field class="col-md-3 col-12 si-form-field" appearance="outline">
+                <mat-label>MBP Person Email</mat-label>
+                <input [readonly]="!isAuthorized" type="text" matInput placeholder="MBP Person Email" formControlName="mbpPersonEmail">
+            </mat-form-field>
+
+            <mat-form-field class="col-md-3 col-12 si-form-field" appearance="outline">
+              <mat-label>Linkdin ID</mat-label>
+              <input [readonly]="!isAuthorized" type="text" matInput placeholder="Linkdin ID" formControlName="linkdinID">
+            </mat-form-field>
+
+            <mat-form-field class="col-md-3 col-12 si-form-field" appearance="outline">
+              <mat-label>Facebook ID</mat-label>
+              <input [readonly]="!isAuthorized" type="text" matInput placeholder="Facebook ID" formControlName="facebookID">
+            </mat-form-field>
+
+        </div>
+
+        <div class="row">
+          <mat-form-field class="col-md-3 col-12 si-form-field" appearance="outline">
+            <mat-label>Insta ID</mat-label>
+            <input [readonly]="!isAuthorized" type="text" matInput placeholder="Insta ID" formControlName="instaID">
+          </mat-form-field>
+        </div>
+
+        <div *ngIf="isAuthorized" class="col-md-12 text-center btn-container">
+            <button (click)="updateSchool()" class="save-btn" mat-flat-button color="warn">Update School Details</button>
+        </div>
+    </form>
+
+</section>

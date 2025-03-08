@@ -1,0 +1,34 @@
+<div class="school-grade-wrapper">
+    <!-- fxLayout="row" fxLayoutAlign="center center" -->
+    <section class="school-grade-parent-card">
+        <div class="school-grade-header">
+            <mat-card class="school-grade-header-card">
+                <mat-card-content class="school-grade-header-title secondary-text">
+                    <span class="title-text">{{header}}</span>
+                    <mat-icon (click)="close()" class="material-symbols-outlined close-icon">close</mat-icon>
+                </mat-card-content>
+            </mat-card>
+        </div>
+
+        <form [formGroup]="gradeForm" class="school-grade-form-container">
+        
+            <div class="row">
+                <mat-form-field class="col-md-4 col-12 school-grade-form-field" appearance="outline">
+                    <mat-label>Grade Name</mat-label>
+                    <input type="text" matInput placeholder="Grade Name" formControlName="gradeName" required>
+                </mat-form-field>
+                <mat-form-field class="col-md-4 col-12 school-grade-form-field" appearance="outline">
+                    <mat-label>Total Student</mat-label>
+                    <input type="number" matInput placeholder="Total Student" formControlName="totalStudentCount" required>
+                </mat-form-field>
+                <mat-form-field class="col-md-4 col-12 school-grade-form-field" appearance="outline">
+                    <mat-label>Total Given Books</mat-label>
+                    <input type="number" matInput placeholder="Total Given Books" formControlName="booksGivenCount" required>
+                </mat-form-field>
+            </div>
+        </form>
+        <div *ngIf="isAuthorized" class="col-md-12 text-center btn-container">
+            <button (click)="submitGrade()" class="save-btn" mat-flat-button color="warn">Save</button>
+        </div>
+    </section>
+</div>

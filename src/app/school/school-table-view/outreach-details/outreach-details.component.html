@@ -1,0 +1,69 @@
+<div class="od-wrapper">
+    <!-- fxLayout="row" fxLayoutAlign="center center" -->
+    <section class="od-parent-card">
+        <div class="od-header">
+            <mat-card class="od-header-card">
+                <mat-card-content class="od-header-title secondary-text">
+                    <span class="title-text">Outreach Detail</span>
+                    <mat-icon (click)="close()" class="material-symbols-outlined close-icon">close</mat-icon>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div *ngIf="data?.length" class="row">
+            <div class="col-6 od-padding ft-sz-16" *ngFor="let user of data">
+                <h3 style="font-weight: 500;">{{getTeamName(user?.nameofMyTeam)}}</h3>
+                <span class="d-flex">
+                    <div class="col-md-4 col-12">
+                        Name
+                    </div>
+                    <div class="col-md-8 col-12">
+                        {{user.firstname}} {{user.lastname}}
+                    </div>
+                </span>
+                
+                <div class="col-12 mb-10">
+                    <mat-divider></mat-divider>
+                </div>
+    
+                <span class="d-flex">
+                    <div class="col-md-4 col-12">
+                        Email
+                    </div>
+                    <div class="col-md-8 col-12">
+                        {{user.email}}
+                    </div>
+                </span>
+                
+                <div class="col-12 mb-10">
+                    <mat-divider></mat-divider>
+                </div>
+    
+                <span class="d-flex">
+                    <div class="col-md-4 col-12">
+                        Contact Number
+                    </div>
+                    <div class="col-md-8 col-12">
+                        {{user.contactNum1}}
+                    </div>
+                </span>
+                
+                <div class="col-12 mb-10">
+                    <mat-divider></mat-divider>
+                </div>
+            </div>
+        </div>
+
+        <div class="no-team-detail" *ngIf="!data?.length">
+            Team detail not available
+        </div>
+        
+       
+
+        
+
+       
+        <div class="col-md-12 text-center btn-container">
+            <button (click)="close()" class="save-btn" mat-flat-button color="warn">Ok</button>
+        </div>
+    </section>
+</div>

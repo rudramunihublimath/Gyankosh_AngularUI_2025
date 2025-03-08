@@ -1,0 +1,159 @@
+<div class="flex-center h-100">
+    <mat-card class="rs-card">
+        <div class="flex-center h-100">
+            <div class="col-md-3 col-12 flex-center right-section">
+                <img src="assets/images/svgImg1.svg" alt="">
+            </div>
+            <div class="col-md-9 col-12 left-section">
+                <div class="text-center title-container mb-8">
+                    <h2 class="title-text primary-text mb-8">School Registration Form</h2>
+                </div>
+                <!-- LEFT SECTION -->
+                <form [formGroup]="registerSchoolForm" class="left-section">
+                    <div class="row">
+                        <mat-form-field class="col-md-3 col-12 rs-form-field" appearance="outline">
+                            <mat-label>School Name</mat-label>
+                            <input type="text" matInput placeholder="School Name" formControlName="name" required>
+                        </mat-form-field>
+                        <mat-form-field class="col-md-3 col-12 rs-form-field" appearance="outline">
+                            <mat-label>Board</mat-label>
+                            <mat-select multiple formControlName="board" required>
+                              <mat-option *ngFor="let board of boards" [value]="board">
+                                {{board}}
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                        <mat-form-field class="col-md-3 col-12 rs-form-field" appearance="outline">
+                            <mat-label>Email</mat-label>
+                            <input type="text" matInput placeholder="Email" formControlName="email" required>
+                        </mat-form-field>
+                        <mat-form-field class="col-md-3 col-12 rs-form-field" appearance="outline">
+                            <mat-label>Website URL</mat-label>
+                            <input type="text" matInput placeholder="Website URL" formControlName="websiteURL" required>
+                        </mat-form-field>
+                    </div>
+                    <div class="row">
+                        <mat-form-field class="col-md-6 col-12 rs-form-field" appearance="outline">
+                            <mat-label>Address Line 1</mat-label>
+                            <input type="text" matInput placeholder="Address Line 1" formControlName="address1" required>
+                        </mat-form-field>
+                        <!-- <mat-form-field class="col-md-6 col-12 rs-form-field" appearance="outline">
+                            <mat-label>Address Line 2</mat-label>
+                            <input type="text" matInput placeholder="Address Line 2" formControlName="address2">
+                        </mat-form-field> -->
+                        <mat-form-field class="col-md-3 col-12 rs-form-field" appearance="outline">
+                          <mat-label>Country</mat-label>
+                          <mat-icon matSuffix class="search-icon">search</mat-icon>
+                          <input type="text" placeholder="Country" aria-label="Number" matInput 
+                            formControlName="country" [matAutocomplete]="ctry" required
+                          >
+                          <mat-autocomplete #ctry="matAutocomplete" (optionSelected)="selectedCountry($event)">
+                            <mat-option *ngFor="let country of filteredCountries | async" [value]="country">
+                              {{country}}
+                            </mat-option>
+                          </mat-autocomplete>
+                        </mat-form-field>
+                        
+                        <mat-form-field class="col-md-3 col-12 rs-form-field" appearance="outline">
+                          <mat-label>State</mat-label>
+                          <mat-select formControlName="state" required
+                          (selectionChange)="selectedState($event)"
+                          >
+                            <mat-option *ngFor="let state of states" [value]="state">
+                              {{state}}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="row">
+                        
+                        <mat-form-field class="col-md-3 col-12 rs-form-field" appearance="outline">
+                          <mat-label>City</mat-label>
+                          <mat-select formControlName="city" required>
+                            <mat-option *ngFor="let city of cities" [value]="city">
+                              {{city}}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+
+                        <mat-form-field class="col-md-3 col-12 rs-form-field" appearance="outline">
+                            <mat-label>Pin Code</mat-label>
+                            <input type="text" matInput placeholder="Pin Code" formControlName="pincode" required>
+                        </mat-form-field>
+
+                        <mat-form-field class="col-md-3 col-12 rs-form-field" appearance="outline">
+                          <mat-label>Contact No. 1</mat-label>
+                          <input type="text" matInput placeholder="Contact No. 1" formControlName="contactNum1" required>
+                        </mat-form-field>
+                
+                        <mat-form-field class="col-md-3 col-12 rs-form-field" appearance="outline">
+                          <mat-label>Contact No. 2</mat-label>
+                          <input type="text" matInput placeholder="Contact No. 2" formControlName="contactNum2">
+                        </mat-form-field>
+                    </div>
+
+                    <div class="row">
+                        
+                      <mat-form-field class="col-md-3 col-12 rs-form-field" appearance="outline">
+                        <mat-label>Target Phase</mat-label>
+                        <mat-select formControlName="targetPhase" required>
+                          <mat-option *ngFor="let phase of phases" [value]="phase">
+                            {{phase}}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                        <mat-form-field class="col-md-3 col-12 rs-form-field" appearance="outline">
+                          <mat-label>Linkdin ID</mat-label>
+                          <input type="text" matInput placeholder="Linkdin ID" formControlName="linkdinID">
+                        </mat-form-field>
+
+                        <mat-form-field class="col-md-3 col-12 rs-form-field" appearance="outline">
+                            <mat-label>Facebook ID</mat-label>
+                            <input type="text" matInput placeholder="Facebook ID" formControlName="facebookID">
+                        </mat-form-field>
+                        <mat-form-field class="col-md-3 col-12 rs-form-field" appearance="outline">
+                          <mat-label>Insta ID</mat-label>
+                          <input type="text" matInput placeholder="Insta ID" formControlName="instaID">
+                        </mat-form-field>
+                    </div>
+
+                    <div class="row">
+                        
+                        <mat-form-field class="col-md-3 col-12 rs-form-field" appearance="outline">
+                            <mat-label>Reference Person Name</mat-label>
+                            <input type="text" matInput placeholder="Reference Person Name" formControlName="refPersonName">
+                        </mat-form-field>
+  
+                        <mat-form-field class="col-md-3 col-12 rs-form-field" appearance="outline">
+                            <mat-label>Reference Person Contact</mat-label>
+                            <input type="text" matInput placeholder="Reference Person Contact" formControlName="refPersonContactNum">
+                        </mat-form-field>
+                        <mat-form-field class="col-md-3 col-12 rs-form-field" appearance="outline">
+                          <mat-label>MBP Person Name</mat-label>
+                          <input type="text" matInput placeholder="MBP Person Name" formControlName="mbpPersonName">
+                      </mat-form-field>
+
+                      <mat-form-field class="col-md-3 col-12 rs-form-field" appearance="outline">
+                          <mat-label>MBP Person Contact</mat-label>
+                          <input type="text" matInput placeholder="MBP Person Contact" formControlName="mbpPersonContactNum">
+                      </mat-form-field>
+                    </div>
+
+                    <div class="row">
+                        
+                        <mat-form-field class="col-md-3 col-12 rs-form-field" appearance="outline">
+                            <mat-label>MBP Person Email</mat-label>
+                            <input type="text" matInput placeholder="MBP Person Email" formControlName="mbpPersonEmail">
+                        </mat-form-field>
+
+                    </div>
+
+                    <div *ngIf="isAuthorized" class="col-md-12 text-center btn-container">
+                        <button (click)="addSchool()" class="save-btn" mat-flat-button color="warn">Save School Details</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+    </mat-card>
+</div>

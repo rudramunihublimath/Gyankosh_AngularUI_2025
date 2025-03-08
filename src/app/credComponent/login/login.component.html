@@ -1,0 +1,59 @@
+<section class="login-container">
+  <div class="imgBx">
+    <!-- <h1 class="org-name">MAITRIBODH</h1> -->
+    <!-- <img src="../../../assets/images/maitribodh_logo_1.jpg" alt="login_img"> -->
+    <img src="/root/MBP/IMAGES/logo/mblogo1.jpg" alt="login_img">
+    
+    
+  </div>
+  <div class="contentBx">
+    <div class="formBx">
+      <h2 class="login-txt">Login</h2>
+      <form [formGroup]="loginForm">
+        <mat-form-field class="w-100" appearance="outline">
+          <mat-label>Name</mat-label>
+          <input type="text" matInput placeholder="Name" formControlName="email" required>
+        </mat-form-field>
+
+        <mat-form-field class="w-100" appearance="outline">
+          <mat-label>Password</mat-label>
+          <input type="password" matInput placeholder="Password" formControlName="password" required>
+        </mat-form-field>
+      </form>
+      <div>
+        <button (click)="login()" class="w-100" mat-raised-button color="warn"
+          [disabled]="loginForm.invalid"
+        >
+          Sign in
+        </button>
+      </div>
+      
+      <div class="signup-link">
+        <a (click)="openForgotPasswordDialog()">Forgot Password</a>
+      </div>
+      <!-- <div class="signup-link text-center mt-16">
+        <p>Don't have an account? <a routerLink="/register">Register</a></p>
+      </div> -->
+    </div>
+  </div>
+</section>
+
+
+<!-- <div class="login-wrapper outlet-height" fxLayout="row" fxLayoutAlign="center center">
+    <mat-card class="box">
+      <mat-card-header>
+        <mat-card-title>Log in</mat-card-title>
+      </mat-card-header>
+      <form class="example-form">
+        <mat-card-content>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Username">
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Password">
+          </mat-form-field>
+        </mat-card-content>
+        <button mat-stroked-button color="accent" class="btn-block">Log in</button>
+      </form>
+    </mat-card>
+  </div> -->

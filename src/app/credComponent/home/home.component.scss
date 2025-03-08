@@ -1,0 +1,36 @@
+.container-bgd-img {
+    background-image: url("/root/MBP/IMAGES/logo/bgImg1.png");
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    background-size: cover;
+    background-size: 18%;
+}
+.clearfix {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.sub-title {
+    margin-bottom: 15px;
+    letter-spacing: 5px;
+    color: #878787;
+    font-size: 18px;
+    text-transform: uppercase;
+}
+
+.title-text {
+    font-weight: 300;
+    font-size: 30px;
+    // color: #535353;
+}
+
+.about-us-btn {
+    border: 1px solid;
+    font-size: 12px;
+}
+
+.clearfix::after {
+    display: block;
+    clear: both;
+    content: "";
+}

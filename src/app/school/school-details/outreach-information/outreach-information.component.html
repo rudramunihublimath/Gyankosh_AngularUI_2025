@@ -1,0 +1,83 @@
+
+<ngx-spinner type="ball-scale-multiple"></ngx-spinner>
+<div class="flex-center oi-details-main">
+  <div class="table-card">
+    <div class="table-title">
+      <span class="utv-title">Outreach Information</span>
+      <button *ngIf="isAuthorized && !dataSource[0]?.id" (click)="openOutreachDetails(false)" class="add-btn" mat-raised-button color="warn">Add Outreach</button>
+    </div>
+    <div class="table-container">
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">  
+        <!-- Position Column -->
+        <ng-container matColumnDef="position">
+          <th class="text-center" mat-header-cell *matHeaderCellDef> No. </th>
+          <td class="text-center" mat-cell *matCellDef="let element; let i=index"> {{i+1}} </td>
+        </ng-container>
+
+    
+        <!-- Outreach Column -->
+        <ng-container matColumnDef="outreachuserid">
+            <th class="text-center" mat-header-cell *matHeaderCellDef> Outreach Person </th>
+            <td class="text-center" mat-cell *matCellDef="let element"> 
+              <a class="a-link" (click)="getUserByEmail(element?.outreachuserid)">
+                {{element.outreachuserid}} 
+              </a>
+            </td>
+        </ng-container>
+
+        <!-- Outreach Assign Column -->
+        <ng-container matColumnDef="outreach_assigneddate">
+          <th class="text-center" mat-header-cell *matHeaderCellDef> Outreach Onboarding DateTime </th>
+          <td class="text-center" mat-cell *matCellDef="let element"> {{element.outreach_assigneddate | date: 'longDate'}} </td>
+        </ng-container>
+
+        <!-- Outreach Head Column -->
+        <ng-container matColumnDef="outreachheaduserid">
+            <th class="text-center" mat-header-cell *matHeaderCellDef> Outreach Head </th>
+            <td class="text-center" mat-cell *matCellDef="let element"> 
+              <a class="a-link" (click)="getUserByEmail(element?.outreachheaduserid)">
+                {{element.outreachheaduserid}} 
+              </a>
+            </td>
+        </ng-container>
+      
+        <!-- Outreach Head Assign Column -->
+        <ng-container matColumnDef="outreachHead_assigneddate">
+          <th class="text-center" mat-header-cell *matHeaderCellDef> Outreach Head Onboarding DateTime</th>
+          <td class="text-center" mat-cell *matCellDef="let element"> {{element.outreachHead_assigneddate | date: 'longDate'}} </td>
+        </ng-container>
+
+        <!-- Action Column -->
+        <ng-container matColumnDef="actions">
+          <th class="text-center" mat-header-cell *matHeaderCellDef> Actions </th>
+          <td class="text-center" mat-cell *matCellDef="let element"> 
+            <mat-icon (click)="openOutreachDetails(true, element)" class="material-symbols-outlined utv-edit-icon">
+              edit
+            </mat-icon>
+            <!-- <mat-icon class="material-symbols-outlined utv-delete-icon">
+              delete
+            </mat-icon> -->
+          </td>
+        </ng-container>
+
+        <!-- Action Filter -->
+        <ng-container matColumnDef="actionFilter">
+          <th mat-header-cell *matHeaderCellDef> </th>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true" class="h-42 utv-header-row" ></tr>
+        <tr class="h-42" mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      <div *ngIf="!dataSource.length" class="no-record-msg">
+        No Records Available 
+      </div>
+    </div>
+    
+    
+    
+    
+    
+</div>
+</div>
+
+  

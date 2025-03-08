@@ -1,0 +1,127 @@
+.grade-details-main {
+    height: 100%;
+    overflow: hidden;
+    .table-card {
+      width: 95%;
+    //   height: 85vh;
+      margin: 8px 0px;
+      // padding: 10px 0px 30px;
+    //   overflow: auto;
+      display: block;
+      .table-title {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        border-bottom: 1px solid;
+        margin-bottom: 8px;
+        padding-bottom: 8px;
+        position: relative;
+        .utv-title {
+          font-size: 16px;
+          font-weight: 500;
+          position: inherit;
+          top: 3px;
+        }
+        .add-btn {
+          font-size: 12px;
+          letter-spacing: 0.4px;
+          height: 28px;
+          padding: 0 10px;
+        }
+      }
+      .h-42 {
+        height: 42px !important;
+        font-size: 12px;
+      }
+      .sg-tbl-footer {
+        // background: peachpuff;
+        font-weight: 500;
+        font-size: 14px;
+      }
+      .utv-header-row {
+        background: lightsalmon; //#f3b570;
+      }
+      .utv-edit-icon {
+        font-size: 18px;
+        color: darkgreen;
+        vertical-align: bottom;
+        cursor: pointer;
+      }
+      .utv-delete-icon {
+        font-size: 18px;
+        color: crimson;
+        vertical-align: bottom;
+        cursor: pointer;
+      }
+  
+      .no-record-msg {
+        text-align: center;
+        margin-top: 16px;
+        font-size: 16px;
+        font-weight: 500;
+        color: darkgray;
+      }
+    }  
+  }
+  
+  .mat-mdc-table {
+    width: 100%;
+    max-height: 300px;
+    overflow: auto;
+  }
+  
+  .table-container {
+    height: 98%;
+    overflow: auto;
+  }
+  
+  .up-form-field {
+    position: relative;
+    input {
+        position: inherit;
+        bottom: 12px;
+        font-size: 13px;
+    }
+  }
+
+  .grade-form-field {
+    position: relative;
+    input {
+        position: inherit;
+        bottom: 12px;
+        font-size: 13px;
+  }
+}
+
+
+  ::ng-deep .grade-form-field.mat-mdc-form-field .mdc-text-field--outlined .mdc-notched-outline--upgraded .mdc-floating-label--float-above {
+    font-size: 12px !important;
+    top: 25px !important;
+}
+  
+::ng-deep .grade-form-field .mdc-text-field--outlined .mdc-floating-label {
+    font-size: 14px !important;
+    top: 14px !important;
+}
+  
+::ng-deep .grade-form-field .mat-mdc-form-field-flex {
+    height: 28px;
+}
+  
+::ng-deep .grade-form-field .mat-mdc-select-trigger {
+    bottom: 12px;
+}
+  
+::ng-deep .grade-form-field .mat-mdc-select-value-text {
+    font-size: 14px;
+}
+
+::ng-deep .grade-form-field .mat-mdc-form-field-subscript-wrapper {
+  display: none !important;
+}
+
+
+
+//   table {
+//     width: 100%;
+//   }

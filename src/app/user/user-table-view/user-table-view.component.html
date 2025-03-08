@@ -1,0 +1,134 @@
+
+<ngx-spinner type="ball-scale-multiple"></ngx-spinner>
+<div class="flex-center user-details-main">
+  <mat-card class="table-card">
+    <div class="table-title">
+      <span class="utv-title">Team Details</span>
+      <span class="align-center utv-action-section">
+        <div class="flex-center mr-4">
+          <mat-form-field class="col-md-8 up-form-field utv w-100" appearance="outline" floatLabel="always" >
+            <input [formControl]="userFilterControl" type="text" matInput placeholder="Search Member">
+          </mat-form-field>
+        </div>
+        <button *ngIf="isAuthorized" (click)="addNewMember()" class="add-btn" mat-raised-button color="warn">Add New Member</button>
+        <span class="upload-icon-container" *ngIf="isAdmin" (click)="schoolCSV.click()">
+          <span class="material-icons material-icons-outlined utv-upload-icon secondary-text"
+            matTooltip="Upload School In Bulk"
+          >
+            upload_file
+            <!-- cloud_upload -->
+          </span>
+          <input [readonly]="!isAuthorized" #schoolCSV type="file" accept=".csv" (change)="uploadSchoolCSV($event)" style="display: none;">
+        </span>
+      </span>
+      
+    </div>
+    <div class="table-container">
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+      
+        <!-- Position Column -->
+        <ng-container matColumnDef="position">
+          <th class="text-center" mat-header-cell *matHeaderCellDef> No. </th>
+          <td class="text-center" mat-cell *matCellDef="let element; let i=index"> {{i+1}} </td>
+        </ng-container>
+
+        <!-- Position Filter -->
+        <ng-container matColumnDef="positionFilter">
+          <th mat-header-cell *matHeaderCellDef> </th>
+        </ng-container>
+      
+        <!-- First Name Column -->
+        <ng-container matColumnDef="firstname">
+          <th class="text-center" mat-header-cell *matHeaderCellDef> First Name </th>
+          <td class="text-center" mat-cell *matCellDef="let element"> {{element.firstname}} </td>
+        </ng-container>
+
+        <!-- First Name Filter -->
+        <ng-container matColumnDef="firstnameFilter">
+          <th mat-header-cell *matHeaderCellDef> 
+            <div class="flex-center">
+              <mat-form-field class="col-md-8 up-form-field utv" appearance="outline" floatLabel="always" >
+                <!-- <mat-label>Filter By First Name</mat-label> -->
+                <input [formControl]="firstNameControl" type="text" matInput placeholder="Filter By First Name">
+              </mat-form-field>
+            </div>
+            
+          </th>
+        </ng-container>
+      
+        <!-- Last Name Column -->
+        <ng-container matColumnDef="lastname">
+          <th class="text-center" mat-header-cell *matHeaderCellDef> Last Name </th>
+          <td class="text-center" mat-cell *matCellDef="let element"> {{element.lastname}} </td>
+        </ng-container>
+
+        <!-- Last Name Filter -->
+        <ng-container matColumnDef="lastnameFilter">
+          <th mat-header-cell *matHeaderCellDef>  
+            <div class="flex-center">
+              <mat-form-field class="col-md-8 up-form-field utv" appearance="outline">
+                <!-- <mat-label>Filter By Last Name</mat-label> -->
+                <input [formControl]="lastNameControl" type="text" matInput placeholder="Filter By Last Name">
+              </mat-form-field>
+            </div>
+           
+          </th>
+        </ng-container>
+      
+        <!-- Email Column -->
+        <ng-container matColumnDef="email">
+          <th class="text-center" mat-header-cell *matHeaderCellDef> Email </th>
+          <td class="text-center" mat-cell *matCellDef="let element"> {{element.email}} </td>
+        </ng-container>
+
+        <!-- Email Filter -->
+        <ng-container matColumnDef="emailFilter">
+          <th mat-header-cell *matHeaderCellDef> 
+            <div class="flex-center">
+              <mat-form-field class="col-md-8 up-form-field utv" appearance="outline">
+                <!-- <mat-label>Filter By Email</mat-label> -->
+                <input [formControl]="emailControl" type="text" matInput placeholder="Filter By Email">
+              </mat-form-field>
+            </div>
+            
+          </th>
+        </ng-container>
+  
+        <!-- Action Column -->
+        <ng-container matColumnDef="actions">
+          <th class="text-center" mat-header-cell *matHeaderCellDef> Actions </th>
+          <td class="text-center" mat-cell *matCellDef="let element"> 
+            <mat-icon (click)="navigateToUserDetails(element.id)" class="material-symbols-outlined utv-edit-icon">
+              edit
+            </mat-icon>
+            <!-- <mat-icon class="material-symbols-outlined utv-delete-icon">
+              delete
+            </mat-icon> -->
+          </td>
+        </ng-container>
+
+        <!-- Action Filter -->
+        <ng-container matColumnDef="actionFilter">
+          <th mat-header-cell *matHeaderCellDef> </th>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true" class="h-42 utv-header-row" ></tr>
+        <!-- <tr mat-header-row *matHeaderRowDef="displayFilterColumns; sticky: true" class="h-42" ></tr> -->
+        <tr class="h-42" mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      <div *ngIf="!dataSource.length" class="no-record-msg">
+        No Records Available 
+      </div>
+    </div>
+    
+    
+    
+    
+    
+  </mat-card>
+</div>
+
+  

@@ -1,0 +1,98 @@
+
+<ngx-spinner type="ball-scale-multiple"></ngx-spinner>
+<div class="flex-center spoc-details-main">
+  <div class="table-card">
+    <div class="table-title">
+      <!-- <span class="utv-title">Point of Contacts</span> -->
+      <button *ngIf="isAuthorized" (click)="openPOCDetails(false)" class="add-btn" mat-raised-button color="warn">Add POC</button>
+    </div>
+    <div class="table-container">
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">  
+        <!-- Position Column -->
+        <ng-container matColumnDef="position">
+          <th class="text-center" mat-header-cell *matHeaderCellDef> No. </th>
+          <td class="text-center" mat-cell *matCellDef="let element; let i=index"> {{i+1}} </td>
+        </ng-container>
+
+    
+        <!-- First Name Column -->
+        <ng-container matColumnDef="firstname">
+          <th class="text-center" mat-header-cell *matHeaderCellDef> First Name </th>
+          <td class="text-center" mat-cell *matCellDef="let element"> {{element.teacherfirstname}} </td>
+        </ng-container>
+
+      
+        <!-- Last Name Column -->
+        <ng-container matColumnDef="lastname">
+          <th class="text-center" mat-header-cell *matHeaderCellDef> Last Name </th>
+          <td class="text-center" mat-cell *matCellDef="let element"> {{element.teacherlastname}} </td>
+        </ng-container>
+
+        <!-- Designation Column -->
+        <ng-container matColumnDef="designation">
+            <th class="text-center" mat-header-cell *matHeaderCellDef> Designation </th>
+            <td class="text-center" mat-cell *matCellDef="let element"> {{element.designation}} </td>
+        </ng-container>
+
+        <!-- Contact Column -->
+        <ng-container matColumnDef="contactNum">
+            <th class="text-center" mat-header-cell *matHeaderCellDef> Contact No. </th>
+            <td class="text-center" mat-cell *matCellDef="let element"> {{element.contactNum1}} </td>
+        </ng-container>
+      
+        <!-- Email Column -->
+        <ng-container matColumnDef="email">
+          <th class="text-center" mat-header-cell *matHeaderCellDef> Email </th>
+          <td class="text-center" mat-cell *matCellDef="let element"> {{element.email}} </td>
+        </ng-container>
+
+        <!-- First Contact Column -->
+        <ng-container matColumnDef="firstContact">
+          <th class="text-center" mat-header-cell *matHeaderCellDef> First Contact </th>
+          <td class="text-center" mat-cell *matCellDef="let element"> {{element.firstContact === 'Yes' ? 'Yes' : 'No'}} </td>
+        </ng-container>
+
+        <!-- Grade Column -->
+        <ng-container matColumnDef="teachingToGrade">
+          <th class="text-center" mat-header-cell *matHeaderCellDef> Grade </th>
+          <td class="text-center" mat-cell *matCellDef="let element"> 
+            <div class="spoc-ellipsis" matTooltip="{{element.teachingToGrade}}">
+              {{element?.teachingToGrade}} 
+            </div>
+          </td>
+        </ng-container>
+  
+        <!-- Action Column -->
+        <ng-container matColumnDef="actions">
+          <th class="text-center" mat-header-cell *matHeaderCellDef> Actions </th>
+          <td class="text-center" mat-cell *matCellDef="let element"> 
+            <mat-icon (click)="openPOCDetails(true, element)" class="material-symbols-outlined utv-edit-icon">
+              edit
+            </mat-icon>
+            <!-- <mat-icon class="material-symbols-outlined utv-delete-icon">
+              delete
+            </mat-icon> -->
+          </td>
+        </ng-container>
+
+        <!-- Action Filter -->
+        <ng-container matColumnDef="actionFilter">
+          <th mat-header-cell *matHeaderCellDef> </th>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true" class="h-42 utv-header-row" ></tr>
+        <tr class="h-42" mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      <div *ngIf="!dataSource.length" class="no-record-msg">
+        No Records Available 
+      </div>
+    </div>
+    
+    
+    
+    
+    
+</div>
+</div>
+
+  

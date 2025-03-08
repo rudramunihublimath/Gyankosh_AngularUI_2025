@@ -1,0 +1,162 @@
+.table-card {
+    width: 95%;
+    height: 85vh;
+    margin: 16px 0px;
+    padding: 20px 50px;
+    overflow: auto;
+    display: block;
+    .table-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid;
+      margin-bottom: 8px;
+      padding-bottom: 8px;
+      position: relative;
+      .utv-title {
+        font-size: 16px;
+        font-weight: 500;
+        position: inherit;
+        top: 3px;
+      }
+      .add-btn {
+        font-size: 12px;
+        letter-spacing: 0.4px;
+        height: 28px;
+        padding: 0 10px;
+        margin-bottom: 3px;
+      }
+    }
+    .h-42 {
+      height: 42px !important;
+      font-size: 12px;
+    }
+    .utv-header-row {
+      background: lightsalmon; //#f3b570;
+    }
+    .utv-edit-icon {
+      font-size: 18px;
+      color: darkgreen;
+      vertical-align: bottom;
+      cursor: pointer;
+    }
+    .utv-delete-icon {
+      font-size: 18px;
+      color: crimson;
+      vertical-align: bottom;
+      cursor: pointer;
+    }
+
+    .no-record-msg {
+      text-align: center;
+      margin-top: 16px;
+      font-size: 16px;
+      font-weight: 500;
+      color: darkgray;
+    }
+  }
+
+  .mat-mdc-table {
+    width: 130%;
+    max-height: 300px;
+    overflow: auto;
+  }
+  
+  .table-container {
+    height: 64vh;
+    overflow: auto;
+  }
+  
+  .stv-form-field {
+    position: relative;
+    input {
+        position: inherit;
+        bottom: 12px;
+        font-size: 13px;
+    }
+  }
+  
+  .example-container {
+    // height: 400px;
+    overflow: auto;
+  }
+    
+  table {
+    width: 100%;
+  }
+
+  .mr-4 {
+    margin-right: 16px;
+  }
+  .align-center {
+    display: flex;
+    align-items: center;
+  }
+
+  .search-icon {
+    padding: 18px 0 6px !important;
+    font-size: 18px !important;
+  }
+
+  .w-50 {
+    width: 50%;
+  }
+
+  .w-90 {
+    width: 90%;
+  }
+
+  ::ng-deep .stv-form-field.mat-mdc-form-field .mdc-text-field--outlined .mdc-notched-outline--upgraded .mdc-floating-label--float-above {
+    font-size: 12px !important;
+    top: 25px !important;
+  }
+  
+  ::ng-deep .stv-form-field .mdc-text-field--outlined .mdc-floating-label {
+    font-size: 14px !important;
+    top: 14px !important;
+  }
+  
+  ::ng-deep .stv-form-field .mat-mdc-form-field-flex {
+      height: 28px;
+    }
+  
+  ::ng-deep .stv-form-field .mat-mdc-select-trigger {
+      bottom: 12px;
+  }
+  
+  ::ng-deep .stv-form-field .mat-mdc-select-value-text {
+      font-size: 14px;
+  }
+  
+  ::ng-deep .stv-form-field .mat-mdc-form-field-subscript-wrapper {
+    height: 0;
+  }
+
+  ::ng-deep .stv-paginator-container .mat-mdc-paginator-page-size {
+    align-items: center;
+  }
+
+  ::ng-deep .stv-paginator-container .mat-mdc-text-field-wrapper {
+    height: 32px;
+  }
+
+  .stv-paginator-container {
+    position: absolute;
+    right: 27px;
+    bottom: 0;
+    width: 100%;
+  }
+
+  .sd-action-section {
+    position: relative;
+    .upload-icon-container {
+      display: flex;
+  }
+    .stv-upload-icon {
+      cursor: pointer;
+      margin-left: 8px;
+      margin-bottom: 3px;
+      font-size: 26px;
+    }
+  }
+  

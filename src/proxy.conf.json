@@ -1,0 +1,6 @@
+{
+    "/Secured/MBP": {
+      "target": "http://82.29.161.198:8081/",
+      "secure": false
+    }
+  }

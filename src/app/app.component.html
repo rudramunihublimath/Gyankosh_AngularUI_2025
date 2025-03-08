@@ -1,0 +1,89 @@
+<!-- Toolbar -->
+<main class="main-container">
+
+  <div *ngIf="currentRoute !== '/login'" class="h-50">
+    <mat-toolbar color="primary" class="app-header">
+      <div>
+        <img src="root/MBP/IMAGES/logo/mblogo1.jpg" alt="" width="80px" height="50px" class="mx-2">
+        <a class="logo-align">
+          <span>MaitriSanskar-Gyankosh</span> 
+        </a>
+      </div>
+      <ul *ngIf="isUserLoggedIn && !(currentRoute === '/home' || currentRoute === '/')" class="nav-item-options primary-text">
+        <li *ngIf="loggedInUserDetails?.nameofMyTeam !== 'Central_Mool'" class="nav-item-list ft-sz-500" routerLink="/school">
+          <mat-icon class="material-symbols-outlined nav-item-icon">
+            home
+          </mat-icon>
+          Home
+        </li>
+        <li *ngIf="isAuthorized" class="nav-item-list ft-sz-500" routerLink="/user-details">
+          <mat-icon class="material-symbols-outlined nav-item-grp-icon">
+            groups
+          </mat-icon>
+          Reporting To Me
+        </li>
+        <li class="nav-item-list ft-sz-500" (click)="navigateToProfile()">
+          <mat-icon class="material-symbols-outlined nav-item-icon">
+            person
+          </mat-icon>
+          My Profile ({{loggedInUserDetails?.firstname}} {{loggedInUserDetails?.lastname}})
+        </li>
+        <li *ngIf="isAuthorized" class="nav-item-list ft-sz-500" routerLink="/reports">
+          <mat-icon class="material-symbols-outlined nav-item-grp-icon">
+            assignment
+          </mat-icon>
+          Reports
+        </li>
+      </ul>
+      <span *ngIf="!isUserLoggedIn || (currentRoute === '/home' || currentRoute === '/')" class="nav-tool-items">
+        <a class="login-btn" mat-stroked-button color="warn" routerLink="login" routerLinkActive="active">Log in</a>
+        <!-- <a class="register-btn" mat-flat-button color="warn" routerLink="register" routerLinkActive="active">Register</a> -->
+      </span>
+      <span *ngIf="isUserLoggedIn && !(currentRoute === '/home' || currentRoute === '/')" class="nav-tool-items flex-center align-center">
+        
+        <span class="user-name">
+          {{loggedInUserDetails?.firstname}} {{loggedInUserDetails?.lastname}}
+        </span>
+
+        <mat-icon style="cursor: pointer;" class="material-symbols-outlined secondary-text" [matMenuTriggerFor]="userAcct"
+        matTooltip="{{loggedInUserDetails?.firstname}} {{loggedInUserDetails?.lastname}}"
+        >
+          account_circle
+        </mat-icon>
+
+        <mat-menu #userAcct="matMenu">
+          <button (click)="openForgotPasswordDialog()" class="user-acct-btn" mat-menu-item>
+            <mat-icon class="material-symbols-outlined nav-item-icon mr-1">
+              key
+            </mat-icon>
+            Change Password
+          </button>
+          <button class="user-acct-btn" mat-menu-item (click)="logout()">
+            <mat-icon class="material-symbols-outlined nav-item-icon mr-1">
+              logout
+            </mat-icon>
+            Sign Out
+          </button>
+        </mat-menu>
+      </span>
+    </mat-toolbar>
+  </div>
+  <!-- <a mat-button mat-raised-button routerLink="register" routerLinkActive="active">Register</a> -->
+  
+  <div class="outlet-overflow outlet-height"
+  [ngClass]="currentRoute !== '/login' ? 'outlet-height' : 'h-100'"
+  >
+    <router-outlet></router-outlet>
+  </div>
+  
+  <!-- <div>
+    <mat-toolbar color="primary" class="app-footer">
+      <div><a href="https://maitribodh.org/" target="_blank" class="logo-align">MAITRIBODH</a></div>
+      <span class="nav-tool-items">
+        <a mat-button routerLink="login" routerLinkActive="active">Log in</a>
+        <a mat-button mat-raised-button routerLink="register" routerLinkActive="active">Register</a>
+      </span>
+    </mat-toolbar>
+  </div> -->
+
+</main>

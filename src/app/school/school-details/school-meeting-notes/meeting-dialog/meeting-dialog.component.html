@@ -1,0 +1,68 @@
+<div class="mom-wrapper">
+    <!-- fxLayout="row" fxLayoutAlign="center center" -->
+    <section class="mom-parent-card">
+        <div class="mom-header">
+            <mat-card class="mom-header-card">
+                <mat-card-content class="mom-header-title secondary-text">
+                    <span class="title-text">{{header}}</span>
+                    <mat-icon (click)="close()" class="material-symbols-outlined close-icon">close</mat-icon>
+                </mat-card-content>
+            </mat-card>
+        </div>
+
+        <form [formGroup]="momForm" class="mom-form-container">
+        
+            <div class="row">
+                <mat-form-field class="col-md-6 col-12 mom-form-field" appearance="outline">
+                    <mat-label>Meeting DateTime</mat-label>
+                    <input matInput [matDatepicker]="picker1" formControlName="meetingDateTime">
+                    <mat-datepicker-toggle matIconSuffix [for]="picker1">
+                        <mat-icon class="mom-calender-icon" matDatepickerToggleIcon>today</mat-icon>
+                    </mat-datepicker-toggle>
+                    <mat-datepicker #picker1></mat-datepicker>
+
+                    <!-- <input matInput [ngxMatDatetimePicker]="picker" formControlName="meetingDateTime">
+                    <mat-datepicker-toggle matSuffix [for]="$any(picker)"></mat-datepicker-toggle>
+                    <ngx-mat-datetime-picker #picker [defaultTime]="[12, 0, 0]">
+                    </ngx-mat-datetime-picker> -->
+
+                </mat-form-field>
+
+                <mat-form-field class="col-md-6 col-12 mom-form-field" appearance="outline">
+                    <mat-label>Next Appointment</mat-label>
+                    <input matInput [matDatepicker]="picker2" formControlName="nextAppointment">
+                    <mat-datepicker-toggle matIconSuffix [for]="picker2">
+                        <mat-icon class="mom-calender-icon" matDatepickerToggleIcon>today</mat-icon>
+                    </mat-datepicker-toggle>
+                    <mat-datepicker #picker2></mat-datepicker>
+                </mat-form-field>
+            </div>
+
+            <div class="row">
+                <mat-form-field class="col-md-12 col-12 mom-form-field textarea-container" appearance="outline">
+                    <mat-label>Minutes of Meeting</mat-label>
+                    <textarea rows="4" matInput placeholder="Minutes of Meeting" formControlName="mom" required></textarea>
+                </mat-form-field>
+
+                <mat-form-field class="col-md-12 col-12 mom-form-field textarea-container" appearance="outline">
+                    <mat-label>What Went Well</mat-label>
+                    <textarea matInput placeholder="What Went Well" formControlName="feedback_Whatwentwell" required></textarea>
+                </mat-form-field>
+
+                <mat-form-field class="col-md-12 col-12 mom-form-field textarea-container" appearance="outline">
+                    <mat-label>Improvements & Feedback</mat-label>
+                    <textarea matInput placeholder="Improvements & Feedback" formControlName="feedback_Improvement" required></textarea>
+                </mat-form-field>
+                <mat-form-field class="col-md-12 col-12 mom-form-field textarea-container" appearance="outline">
+                    <mat-label>Plan of Action</mat-label>
+                    <textarea matInput placeholder="Plan of Action" formControlName="planOfAction" required></textarea>
+                </mat-form-field>
+            </div>
+
+
+        </form>
+        <div class="col-md-12 text-center btn-container">
+            <button (click)="submitMOM()" class="save-btn" mat-flat-button color="warn">Save</button>
+        </div>
+    </section>
+</div>

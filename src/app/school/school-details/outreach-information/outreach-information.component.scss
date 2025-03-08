@@ -1,0 +1,85 @@
+.oi-details-main {
+    height: 100%;
+    overflow: hidden;
+    .table-card {
+      width: 95%;
+    //   height: 85vh;
+      margin: 16px 0px;
+      padding: 10px 0px 30px;
+    //   overflow: auto;
+      display: block;
+      .table-title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid;
+        margin-bottom: 8px;
+        padding-bottom: 8px;
+        position: relative;
+        .utv-title {
+          font-size: 14px;
+          font-weight: 600;
+          position: inherit;
+          top: 3px;
+          color: #545353;
+        }
+        .add-btn {
+          font-size: 12px;
+          letter-spacing: 0.4px;
+          height: 28px;
+          padding: 0 10px;
+        }
+      }
+      .h-42 {
+        height: 42px !important;
+        font-size: 12px;
+      }
+      .utv-header-row {
+        background: lightsalmon; //#f3b570;
+      }
+      .utv-edit-icon {
+        font-size: 18px;
+        color: darkgreen;
+        vertical-align: bottom;
+        cursor: pointer;
+      }
+      .utv-delete-icon {
+        font-size: 18px;
+        color: crimson;
+        vertical-align: bottom;
+        cursor: pointer;
+      }
+  
+      .no-record-msg {
+        text-align: center;
+        margin-top: 16px;
+        font-size: 16px;
+        font-weight: 500;
+        color: darkgray;
+      }
+    }  
+  }
+  
+  .mat-mdc-table {
+    width: 100%;
+    max-height: 300px;
+    overflow: auto;
+  }
+  
+  .table-container {
+    height: 100%;
+    overflow: auto;
+  }
+  
+  .up-form-field {
+    position: relative;
+    input {
+        position: inherit;
+        bottom: 12px;
+        font-size: 13px;
+    }
+  }
+
+//   table {
+//     width: 100%;
+//   }

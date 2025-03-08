@@ -1,0 +1,70 @@
+
+<ngx-spinner type="ball-scale-multiple"></ngx-spinner>
+<div class="flex-center smn-details-main">
+  <div class="table-card">
+    <div class="table-title">
+      <!-- <span class="utv-title">Point of Contacts</span> -->
+      <button *ngIf="isBtnShow" (click)="openMOMDetails(false)" class="add-btn" mat-raised-button color="warn">Add Meeting Notes</button>
+    </div>
+    <div class="table-container">
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">  
+        <!-- Position Column -->
+        <ng-container matColumnDef="position">
+          <th class="text-center" mat-header-cell *matHeaderCellDef> No. </th>
+          <td class="text-center" mat-cell *matCellDef="let element; let i=index"> {{i+1}} </td>
+        </ng-container>
+
+    
+        <!-- Meeting DateTime Column -->
+        <ng-container matColumnDef="meetingDateTime">
+          <th class="text-center" mat-header-cell *matHeaderCellDef> Meeting DateTime </th>
+          <td class="text-center" mat-cell *matCellDef="let element"> {{element.meetingDateTime | date: 'medium'}} </td>
+        </ng-container>
+
+      
+        <!-- Next Appointment Column -->
+        <ng-container matColumnDef="nextAppointment">
+          <th class="text-center" mat-header-cell *matHeaderCellDef> Next Appointment </th>
+          <td class="text-center" mat-cell *matCellDef="let element"> {{element.nextAppointment | date: 'medium'}} </td>
+        </ng-container>
+
+        <!-- MOM Column -->
+        <ng-container matColumnDef="mom">
+            <th class="text-center" mat-header-cell *matHeaderCellDef> Mom </th>
+            <td class="text-center" mat-cell *matCellDef="let element"> {{element.mom}} </td>
+        </ng-container>
+
+        <!-- Action Column -->
+        <ng-container matColumnDef="actions">
+          <th class="text-center" mat-header-cell *matHeaderCellDef> Actions </th>
+          <td class="text-center" mat-cell *matCellDef="let element"> 
+            <mat-icon (click)="openMOMDetails(true, element)" class="material-symbols-outlined utv-edit-icon">
+              edit
+            </mat-icon>
+            <!-- <mat-icon class="material-symbols-outlined utv-delete-icon">
+              delete
+            </mat-icon> -->
+          </td>
+        </ng-container>
+
+        <!-- Action Filter -->
+        <ng-container matColumnDef="actionFilter">
+          <th mat-header-cell *matHeaderCellDef> </th>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true" class="h-42 utv-header-row" ></tr>
+        <tr class="h-42" mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      <div *ngIf="!dataSource.length" class="no-record-msg">
+        No Records Available 
+      </div>
+    </div>
+    
+    
+    
+    
+    
+</div>
+</div>
+
+  

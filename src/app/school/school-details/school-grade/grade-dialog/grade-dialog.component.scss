@@ -1,0 +1,73 @@
+.school-grade-wrapper {
+    padding: 20px 30px;
+    font-family: ui-sans-serif;
+    .school-grade-parent-card {
+        position: relative;
+        .school-grade-header {
+            .school-grade-header-card {
+                background: darkorange;
+                text-align: center;
+                .school-grade-header-title {
+                    font-size: 20px;
+                    font-weight: 600;
+                    padding: 10px;
+                    font-family: "Poppins", sans-serif;
+                    .title-text {
+                        color: #ffffff;
+                    }
+                }
+                .close-icon {
+                    float: right;
+                    color: #ffffff;
+                    cursor: pointer;
+                }
+            }
+        }
+
+        .school-grade-form-container {
+            // overflow: auto;
+            margin-top: 20px;
+            .school-grade-form-field {
+                position: relative;
+                input {
+                    position: inherit;
+                    bottom: 12px;
+                    font-size: 13px;
+                }
+                .search-icon {
+                    padding: 7px;
+                    padding-top: 16px;
+                    font-size: 20px;
+                }
+            }
+        }
+
+        .save-btn {
+            font-size: 14px !important;
+            letter-spacing: 0.5px !important;
+            height: 28px !important;
+        }
+    }  
+}
+
+::ng-deep .school-grade-form-field.mat-mdc-form-field .mdc-text-field--outlined .mdc-notched-outline--upgraded .mdc-floating-label--float-above {
+    font-size: 12px !important;
+    top: 25px !important;
+}
+  
+::ng-deep .school-grade-form-field .mdc-text-field--outlined .mdc-floating-label {
+    font-size: 14px !important;
+    top: 14px !important;
+}
+  
+::ng-deep .school-grade-form-field .mat-mdc-form-field-flex {
+    height: 28px;
+}
+  
+::ng-deep .school-grade-form-field .mat-mdc-select-trigger {
+    bottom: 12px;
+}
+  
+::ng-deep .school-grade-form-field .mat-mdc-select-value-text {
+    font-size: 14px;
+}
