@@ -20,9 +20,11 @@
         top: 3px;
       }
     }
-    
 }
 
+.select-all-checkbox {
+  padding: 0 5px !important;
+}
 .report-dwnld-btn {
     height: 28px;
     margin-left: 20px;
@@ -32,10 +34,12 @@
 .report-form-field {
     position: relative;
     input {
-        position: inherit;
-        bottom: 12px;
-        font-size: 13px;
+      position: inherit;
+      bottom: 12px;
+      font-size: 13px;
     }
+    
+
 }
 
 .table-container {
