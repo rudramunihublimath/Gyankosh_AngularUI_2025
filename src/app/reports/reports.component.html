@@ -19,15 +19,30 @@
           <div class="d-flex">
             <mat-form-field class="col-md-3 col-12 report-form-field" appearance="outline">
               <mat-label>State</mat-label>
-              <mat-select required
-              (selectionChange)="selectedState($event)" multiple
+              <mat-select #selectStates required
+               multiple
+               (selectionChange)="selectedState($event)"
               >
-                <mat-option *ngFor="let state of states" [value]="state">
+
+                <mat-checkbox class="select-all-checkbox" [(ngModel)]="allSelected" ngDefaultControl [ngModelOptions]="{standalone: true}"
+                  (click)="$event.stopPropagation()"
+                  (change)="toggleAllSelection()" 
+                  [color]="'primary'"
+                >
+                  Select All
+                </mat-checkbox>
+                <mat-option (click)="optionClick()" *ngFor="let state of states" [value]="state">
                   {{state}}
                 </mat-option>
               </mat-select>
             </mat-form-field>
-            <button *ngIf="isReadyToDownload"  class="report-dwnld-btn" mat-raised-button color="warn"
+            <button *ngIf="selectedStates?.length"  class="report-dwnld-btn" mat-raised-button color="primary"
+              (click)="downloadReport(selectedStates)"
+            >
+              Submit
+            </button>
+
+            <button *ngIf="isReadyToDownload && selectedStates?.length"  class="report-dwnld-btn" mat-raised-button color="warn"
               (click)="downloadSchoolData()"
             >
               Download

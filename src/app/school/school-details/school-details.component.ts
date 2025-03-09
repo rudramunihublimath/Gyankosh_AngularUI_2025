@@ -33,6 +33,8 @@ export class SchoolDetailsComponent implements OnInit {
     this.schoolService.getSchoolById(id).subscribe((resp: ResponseDto<SchoolDetail>) => {
       this.spinner.hide();
       this.schoolDetails = resp.message;
+    }, err => {
+      this.spinner.hide()
     })
   }
 

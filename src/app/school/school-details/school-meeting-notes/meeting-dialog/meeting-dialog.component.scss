@@ -86,3 +86,13 @@
 ::ng-deep .mom-form-field .mat-mdc-select-value-text {
     font-size: 14px;
 }
+
+:host ::ng-deep .mom-form-field .mat-datepicker-toggle button {
+    width: 38px !important;
+    height: 38px !important;
+}
+
+:host ::ng-deep .mom-form-field .mat-datepicker-toggle button svg {
+    width: 17px !important;
+    height: 17px !important;
+}

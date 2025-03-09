@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import * as moment from 'moment';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { LoginService } from 'src/app/services/login.service';
 import { SchoolService } from 'src/app/services/school.service';
@@ -53,10 +54,12 @@ export class MeetingDialogComponent implements OnInit {
   }
 
   submitMOM() {
-    this.spinner.show();
+    // this.spinner.show();
     const payload: SchoolMOM = this.momForm.getRawValue();
-    payload.meetingDateTime = this.formatDate(this.momForm.controls['meetingDateTime']?.value);
-    payload.nextAppointment = this.formatDate(this.momForm.controls['nextAppointment']?.value);
+    // payload.meetingDateTime = this.formatDate(this.momForm.controls['meetingDateTime']?.value);
+    // payload.nextAppointment = this.formatDate(this.momForm.controls['nextAppointment']?.value);
+    payload.meetingDateTime = moment(this.momForm.controls['meetingDateTime']?.value).format('YYYY-MM-DDTHH:mm:ss')
+    payload.nextAppointment = moment(this.momForm.controls['nextAppointment']?.value).format('YYYY-MM-DDTHH:mm:ss')
     payload.schoolNmReq = {id: this.data.schoolId};
     this.data['id'] ? this.updateMOM(payload) : this.saveMOM(payload);
   }
