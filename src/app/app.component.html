@@ -4,7 +4,7 @@
   <div *ngIf="currentRoute !== '/login'" class="h-50">
     <mat-toolbar color="primary" class="app-header">
       <div>
-        <img src="root/MBP/IMAGES/logo/mblogo1.jpg" alt="" width="80px" height="50px" class="mx-2">
+        <img src="http://82.29.161.198:8081/assets/images/mblogo1.jpg" alt="" width="80px" height="50px" class="mx-2">
         <a class="logo-align">
           <span>MaitriSanskar-Gyankosh</span> 
         </a>
@@ -22,12 +22,12 @@
           </mat-icon>
           Reporting To Me
         </li>
-        <li class="nav-item-list ft-sz-500" (click)="navigateToProfile()">
+        <!-- <li class="nav-item-list ft-sz-500" (click)="navigateToProfile()">
           <mat-icon class="material-symbols-outlined nav-item-icon">
             person
           </mat-icon>
           My Profile ({{loggedInUserDetails?.firstname}} {{loggedInUserDetails?.lastname}})
-        </li>
+        </li> -->
         <li *ngIf="isAuthorized" class="nav-item-list ft-sz-500" routerLink="/reports">
           <mat-icon class="material-symbols-outlined nav-item-grp-icon">
             assignment
@@ -52,6 +52,12 @@
         </mat-icon>
 
         <mat-menu #userAcct="matMenu">
+          <button (click)="navigateToProfile()" class="user-acct-btn" mat-menu-item>
+            <mat-icon class="material-symbols-outlined nav-item-icon">
+              person
+            </mat-icon>
+            My Profile
+          </button>
           <button (click)="openForgotPasswordDialog()" class="user-acct-btn" mat-menu-item>
             <mat-icon class="material-symbols-outlined nav-item-icon mr-1">
               key

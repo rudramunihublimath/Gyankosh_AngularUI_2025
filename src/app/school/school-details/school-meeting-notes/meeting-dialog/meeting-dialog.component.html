@@ -15,26 +15,32 @@
             <div class="row">
                 <mat-form-field class="col-md-6 col-12 mom-form-field" appearance="outline">
                     <mat-label>Meeting DateTime</mat-label>
-                    <input matInput [matDatepicker]="picker1" formControlName="meetingDateTime">
-                    <mat-datepicker-toggle matIconSuffix [for]="picker1">
-                        <mat-icon class="mom-calender-icon" matDatepickerToggleIcon>today</mat-icon>
-                    </mat-datepicker-toggle>
-                    <mat-datepicker #picker1></mat-datepicker>
-
-                    <!-- <input matInput [ngxMatDatetimePicker]="picker" formControlName="meetingDateTime">
-                    <mat-datepicker-toggle matSuffix [for]="$any(picker)"></mat-datepicker-toggle>
-                    <ngx-mat-datetime-picker #picker [defaultTime]="[12, 0, 0]">
-                    </ngx-mat-datetime-picker> -->
-
+                    <input matInput [ngxMatDatetimePicker]="pickerCustomIcon" placeholder="Choose a date"
+                    formControlName="meetingDateTime" [disabled]="false">
+                    <ngx-mat-datepicker-toggle matSuffix [for]="pickerCustomIcon"></ngx-mat-datepicker-toggle>
+                    <ngx-mat-datetime-picker #pickerCustomIcon [showSpinners]="true" [showSeconds]="true"
+                      [stepHour]="1" [stepMinute]="1" [stepSecond]="1" [touchUi]="false"
+                      [color]="'primary'" [enableMeridian]="true" [disableMinute]="false" [hideTime]="false">
+                      <ngx-mat-datepicker-actions>
+                        <button mat-button ngxMatDatepickerCancel>Cancel</button>
+                        <button mat-raised-button color="primary" ngxMatDatepickerApply>Apply</button>
+                      </ngx-mat-datepicker-actions>
+                    </ngx-mat-datetime-picker>
                 </mat-form-field>
 
                 <mat-form-field class="col-md-6 col-12 mom-form-field" appearance="outline">
                     <mat-label>Next Appointment</mat-label>
-                    <input matInput [matDatepicker]="picker2" formControlName="nextAppointment">
-                    <mat-datepicker-toggle matIconSuffix [for]="picker2">
-                        <mat-icon class="mom-calender-icon" matDatepickerToggleIcon>today</mat-icon>
-                    </mat-datepicker-toggle>
-                    <mat-datepicker #picker2></mat-datepicker>
+                    <input matInput [ngxMatDatetimePicker]="pickerCustomIcon1" placeholder="Choose a date"
+                    formControlName="nextAppointment" [disabled]="false">
+                    <ngx-mat-datepicker-toggle matSuffix [for]="pickerCustomIcon1"></ngx-mat-datepicker-toggle>
+                    <ngx-mat-datetime-picker #pickerCustomIcon1 [showSpinners]="true" [showSeconds]="true"
+                      [stepHour]="1" [stepMinute]="1" [stepSecond]="1" [touchUi]="false"
+                      [color]="'primary'" [enableMeridian]="true" [disableMinute]="false" [hideTime]="false">
+                      <ngx-mat-datepicker-actions>
+                        <button mat-button ngxMatDatepickerCancel>Cancel</button>
+                        <button mat-raised-button color="primary" ngxMatDatepickerApply>Apply</button>
+                      </ngx-mat-datepicker-actions>
+                    </ngx-mat-datetime-picker>
                 </mat-form-field>
             </div>
 

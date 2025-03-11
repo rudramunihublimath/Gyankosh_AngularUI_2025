@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { LoginService } from '../services/login.service';
-import { MatSelectChange } from '@angular/material/select';
+import { MatSelect, MatSelectChange } from '@angular/material/select';
 import { FormControl } from '@angular/forms';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { HttpResponse } from '@angular/common/http';
 import { Report2Dto, ResponseDto } from '../types';
+import { MatOption } from '@angular/material/core';
 
 @Component({
   selector: 'app-reports',
@@ -22,8 +23,12 @@ export class ReportsComponent implements OnInit {
   fileName!: string;
 
   // table
-  displayedColumns = ['id', 'schoolName', 'nextAppointment'];
+  displayedColumns = ['id', 'schoolName'];
   report2DataSource: Report2Dto[] = [];
+
+  @ViewChild('selectStates') select!: MatSelect;
+  allSelected=false;
+  selectedStates: Array<string> = [];
 
   constructor(
     private loginService: LoginService,
@@ -40,13 +45,6 @@ export class ReportsComponent implements OnInit {
     this.loginService.getStates(countryId).subscribe(resp => {
       this.states = Object.values(resp);
     })
-  }
-
-  selectedState(evt: MatSelectChange) {
-    const state = evt.value;
-    if(state) {
-      this.downloadReport1(state);
-    }
   }
 
   createSchoolReportFileName() {
@@ -99,9 +97,43 @@ export class ReportsComponent implements OnInit {
   getReport2() {
     const loggedInUserDetails = JSON.parse(this.loginService.getUserDetails());
     this.loginService.getReport2(loggedInUserDetails.id).subscribe((resp: ResponseDto<any>) => {
-      console.log('resp', resp);
       this.report2DataSource = resp.message;
     })
+  }
+
+  selectedState(evt: MatSelectChange) {
+    const state = evt.value;
+    this.selectedStates = state;
+    if(this.selectedStates?.length === 0) {
+      this.isReadyToDownload = false;
+    }
+
+    // if(state) {
+    //   this.downloadReport1(state);
+    // }
+  }
+
+  downloadReport(state: Array<string>) {
+    const selectedStates = this.allSelected ? 'ALLSTATES' : state ;
+    this.downloadReport1(selectedStates.toString());
+  }
+
+  toggleAllSelection() {
+    if (this.allSelected) {
+
+      this.select.options.forEach((item: MatOption) => item.select());
+    } else {
+      this.select.options.forEach((item: MatOption) => item.deselect());
+    }
+  }
+   optionClick() {
+    let newStatus = true;
+    this.select.options.forEach((item: MatOption) => {
+      if (!item.selected) {
+        newStatus = false;
+      }
+    });
+    this.allSelected = newStatus;
   }
 
 }

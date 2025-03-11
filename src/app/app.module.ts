@@ -40,6 +40,9 @@ import { SchoolGradeComponent } from './school/school-details/school-grade/schoo
 import { GradeDialogComponent } from './school/school-details/school-grade/grade-dialog/grade-dialog.component';
 import { AddTeamComponent } from './school/school-table-view/add-team/add-team.component';
 import { ReportsComponent } from './reports/reports.component';
+import { NgxMatMomentModule } from '@angular-material-components/moment-adapter';
+// import { MatDatepickerModule } from '@angular/material/datepicker';
+// import { MatNativeDateModule } from '@angular/material/core';
 
 
 const INTL_DATE_INPUT_FORMAT = {
@@ -53,16 +56,29 @@ const INTL_DATE_INPUT_FORMAT = {
   second: '2-digit',
 }
 
-const MAT_DATE_FORMATS: NgxMatDateFormats =  {
+// const MAT_DATE_FORMATS: NgxMatDateFormats =  {
 
+//   parse: {
+//     dateInput: INTL_DATE_INPUT_FORMAT,
+//   },
+//   display: {
+//     dateInput: INTL_DATE_INPUT_FORMAT,
+//     monthYearLabel: {year: 'numeric', month: 'short'},
+//     dateA11yLabel: {year: 'numeric', month: 'long', day: 'numeric'},
+//     monthYearA11yLabel: {year: 'numeric', month: 'long'},
+//   }
+// };
+
+// If using Moment
+const CUSTOM_DATE_FORMATS: NgxMatDateFormats = {
   parse: {
-    dateInput: INTL_DATE_INPUT_FORMAT,
+    dateInput: "l, LTS"
   },
   display: {
-    dateInput: INTL_DATE_INPUT_FORMAT,
-    monthYearLabel: {year: 'numeric', month: 'short'},
-    dateA11yLabel: {year: 'numeric', month: 'long', day: 'numeric'},
-    monthYearA11yLabel: {year: 'numeric', month: 'long'},
+    dateInput: "l, LTS",
+    monthYearLabel: "MMM YYYY",
+    dateA11yLabel: "LL",
+    monthYearA11yLabel: "MMMM YYYY"
   }
 };
 
@@ -111,11 +127,14 @@ const MAT_DATE_FORMATS: NgxMatDateFormats =  {
     NgxSpinnerModule,
     NgxMatDatetimePickerModule,
     NgxMatTimepickerModule,
-    NgxMatNativeDateModule
+    NgxMatNativeDateModule,
+    NgxMatMomentModule,
+    // MatDatepickerModule, 
+    // MatNativeDateModule,
     
   ],
   providers: [authInterceptorProviders,
-    {provide: NGX_MAT_DATE_FORMATS, useValue: NGX_MAT_DATE_FORMATS}
+    {provide: NGX_MAT_DATE_FORMATS, useValue: CUSTOM_DATE_FORMATS}
   ], //authInterceptorProviders
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

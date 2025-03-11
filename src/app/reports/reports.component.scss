@@ -1,76 +1,80 @@
 .report-card {
-    width: 95%;
-    height: 85vh;
-    margin: 16px 0px;
-    padding: 20px 50px;
-    overflow: auto;
-    display: block;
-    .report-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid;
-      margin-bottom: 8px;
-      padding-bottom: 8px;
-      position: relative;
-      .report-title {
-        font-size: 16px;
-        font-weight: 500;
-        position: inherit;
-        top: 3px;
-      }
+  width: 95%;
+  height: 85vh;
+  margin: 16px 0px;
+  padding: 20px 50px;
+  overflow: auto;
+  display: block;
+  .report-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid;
+    margin-bottom: 8px;
+    padding-bottom: 8px;
+    position: relative;
+    .report-title {
+      font-size: 16px;
+      font-weight: 500;
+      position: inherit;
+      top: 3px;
     }
-    
+  }
 }
 
+.select-all-checkbox {
+padding: 0 5px !important;
+}
 .report-dwnld-btn {
-    height: 28px;
-    margin-left: 20px;
-    margin-top: 2px;
+  height: 28px;
+  margin-left: 20px;
+  margin-top: 2px;
 }
 
 .report-form-field {
-    position: relative;
-    input {
-        position: inherit;
-        bottom: 12px;
-        font-size: 13px;
-    }
+  position: relative;
+  input {
+    position: inherit;
+    bottom: 12px;
+    font-size: 13px;
+  }
+  
+
 }
 
 .table-container {
-    height: 100%;
-    overflow: auto;
-  }
+  height: 100%;
+  overflow: auto;
+}
 
 .h-42 {
-    height: 42px !important;
-    font-size: 12px;
-  }
-  .report2-header-row {
-    background: lightsalmon; //#f3b570;
-  }
+  height: 42px !important;
+  font-size: 12px;
+}
+.report2-header-row {
+  background: lightsalmon; //#f3b570;
+}
 
 ::ng-deep .report-form-field.mat-mdc-form-field .mdc-text-field--outlined .mdc-notched-outline--upgraded .mdc-floating-label--float-above {
-    font-size: 12px !important;
-    top: 25px !important;
+  font-size: 12px !important;
+  top: 25px !important;
 }
-  
+
 ::ng-deep .report-form-field .mdc-text-field--outlined .mdc-floating-label {
-    font-size: 14px !important;
-    top: 14px !important;
+  font-size: 14px !important;
+  top: 14px !important;
 }
-  
+
 ::ng-deep .report-form-field .mat-mdc-form-field-flex {
-    height: 28px;
+  height: 28px;
 }
-  
+
 ::ng-deep .report-form-field .mat-mdc-select-trigger {
-    bottom: 12px;
+  bottom: 12px;
 }
-  
+
 ::ng-deep .report-form-field .mat-mdc-select-value-text {
-    font-size: 14px;
+  font-size: 14px;
 }
 
 //   :host .mat-mdc-form-field + .mat-mdc-form-field {
